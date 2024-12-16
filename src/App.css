@@ -1,0 +1,37 @@
+
+.App {
+  /* background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'Open Sans'; 
+  color: black;
+  min-width: 800px;
+  padding:0;
+  margin-top: 20px;
+  flex-grow: 1; */
+  width: 100%;
+}
+
+.NavBarDiv {
+  /* flex-grow: 1; */
+  order: 0;
+  width: 100%;
+}
+
+/* .NavBar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #0f4d15;
+  color:#ededed;
+} */
+
+.MainSection {
+  order: 1;
+  width: 100%;
+  min-height: 800px;
+  display: flex;
+  flex-direction: row;
+}
