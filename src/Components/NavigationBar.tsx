@@ -14,7 +14,7 @@ function NavigationBar(
     allPages: readonly Page[]}
 ) {
   const Buttons = allPages.map((page) => {
-    return <NavButtton page={page} clickHandler={setPage} />
+    return <NavButtton key={page} page={page} clickHandler={setPage} />
   })
   return (
     <Box className = "NavBarDiv" sx={{ flexGrow: 1 }}>
