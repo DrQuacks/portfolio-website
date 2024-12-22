@@ -33,5 +33,19 @@
   width: 100%;
   min-height: 800px;
   display: flex;
+  flex-direction: column;
+}
+
+.homeBody {
+  display:flex;
   flex-direction: row;
+  justify-content: space-around;
+}
+
+.homeImage {
+  order:1;
+}
+
+.homeTitleText {
+  order: 2;
 }
