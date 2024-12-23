@@ -1,7 +1,16 @@
+import Typography from '@mui/material/Typography';
+
 const ContactPage = () => {
     return (
       <div>
-        <h1>Contact Page</h1>
+        <div className='homeTitleText'>
+          <Typography variant="h1" component="div">
+            Contacts
+          </Typography>
+          <Typography variant="h2" component="div">
+            My contact information
+          </Typography>
+        </div>
       </div>
     );
   };

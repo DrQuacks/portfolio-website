@@ -15,12 +15,12 @@ const HomePage = () => {
       </div>
       <div className='homeTitle'>
         <div className='homeTitleText'>
-        <Typography variant="h1" component="div">
-          {title}
-        </Typography>
-        <Typography variant="h2" component="div">
-          {subtitle}
-        </Typography>
+          <Typography variant="h1" component="div">
+            {title}
+          </Typography>
+          <Typography variant="h2" component="div">
+            {subtitle}
+          </Typography>
         </div>
         <div className='homeTitleHighlights'>
           <List>

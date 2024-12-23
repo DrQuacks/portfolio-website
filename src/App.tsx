@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import NavigationBar from './Components/NavigationBar'
+import BottomBar from './Components/BottomBar'
 import HomePage from './Components/HomePage'
 import AboutPage from './Components/AboutPage'
 import ProjectsPage from './Components/ProjectsPage'
@@ -26,6 +27,9 @@ function App() {
       </div>
       <div className="MainSection">
         {MainSection}
+      </div>
+      <div className="Footer">
+        <BottomBar />
       </div>
     </div>
   )

@@ -1,9 +1,17 @@
+import Typography from '@mui/material/Typography';
 
 const AboutPage = () => {
   
   return (
     <div>
-      <h1>About Page</h1>
+      <div className='homeTitleText'>
+        <Typography variant="h1" component="div">
+          About Me
+        </Typography>
+        <Typography variant="h2" component="div">
+          A little about me
+        </Typography>
+      </div>
     </div>
   );
 };
