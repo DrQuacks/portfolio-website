@@ -10,7 +10,7 @@ const AboutPage = () => {
       <TitleText title={title} />
       <div className='aboutBody'>
         <div className='aboutText'>
-          <Typography variant="h5" align="center">
+          <Typography variant="h5" align="center" color="gray">
             Near the end of grad school, I interned at Sandia National Labs working on lithium-air batteries, and happened
             to attend a talk on Machine Learning. After graduating, I decided to transition to coding. I worked as a tutor
             while I learned to code, and eventually began working at a startup named TrialTrace.  
