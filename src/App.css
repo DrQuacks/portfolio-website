@@ -26,9 +26,19 @@
 }
 
 .NavBarDiv {
-  /* flex-grow: 1; */
+  width: 100%;
+  position: fixed;
+}
+
+.NavBarDivNotHidden {
   order: 0;
   width: 100%;
+}
+
+.NavBarDivHidden {
+  order: 0;
+  width: 100%;
+  opacity: 0;
 }
 
 /* .NavBar {
@@ -42,9 +52,10 @@
 .MainSection {
   order: 1;
   width: 100%;
-  min-height: 800px;
+  /* max-height: 80%; */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .homeBody {
@@ -72,4 +83,17 @@
 
 .homeTitleHighlights {
   order: 2;
+}
+
+.aboutBody {
+  text-align: center;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+}
+
+.aboutText {
+  width: 70%;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }

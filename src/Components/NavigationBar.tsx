@@ -17,7 +17,7 @@ function NavigationBar(
     return <NavButtton key={page} page={page} clickHandler={setPage} />
   })
   return (
-    <Box className = "NavBarDiv" sx={{ flexGrow: 1}}>
+    <Box className="NavBarDivNotHidden" sx={{ flexGrow: 1}}>
       <AppBar position="static" sx={{backgroundColor: 'black' }}>
         <Toolbar>
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>

@@ -9,12 +9,28 @@
         ]
     },
     "about":{
-
+        "title":"About Me"
     },
     "contact":{
-
+        "title":"Contact",
+        "content":"You can contact me at: ",
+        "email":"michael.d.kellar@gmail.com"
     },
     "projects":{
-
+        "title":"Projects",
+        "projects":[
+            {
+                "name":"Project 1",
+                "description":"This is a description of Project 1."
+            },
+            {
+                "name":"Project 2",
+                "description":"This is a description of Project 2."
+            },
+            {
+                "name":"Project 3",
+                "description":"This is a description of Project 3."
+            }
+        ]
     }
 }

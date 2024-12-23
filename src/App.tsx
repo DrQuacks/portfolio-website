@@ -25,6 +25,12 @@ function App() {
           allPages={allPages}
         />
       </div>
+      <div className="NavBarDivHidden">
+        <NavigationBar 
+          setPage={setPage}
+          allPages={allPages}
+        />
+      </div>
       <div className="MainSection">
         {MainSection}
       </div>

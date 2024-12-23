@@ -1,18 +1,14 @@
-import Typography from '@mui/material/Typography';
+import textJson from '../assets/site_text.json';
+import TitleText from './TitleText';
 
 const ProjectsPage = () => {
-    return (
-      <div>
-        <div className='homeTitleText'>
-          <Typography variant="h1" component="div">
-            Projects
-          </Typography>
-          <Typography variant="h2" component="div">
-            Some of my projects
-          </Typography>
-        </div>
-      </div>
-    );
-  };
+  const projectsPageText = textJson.projects
+  const { title } = projectsPageText
+  return (
+    <div>
+      <TitleText title={title} />
+    </div>
+  );
+};
   
   export default ProjectsPage;

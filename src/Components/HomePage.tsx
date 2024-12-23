@@ -1,8 +1,8 @@
 import textJson from '../assets/site_text.json';
 import thinkingImageBW from '../assets/thinkingBW.jpg'; // Ensure you have the correct path to your image
-import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import TitleText from './TitleText';
 
 
 const HomePage = () => {
@@ -11,22 +11,15 @@ const HomePage = () => {
   return (
     <div className='homeBody'>
       <div className='homeImage'>
-        <img src={thinkingImageBW} alt='Me' />
+        <img style={{maxHeight:600}} src={thinkingImageBW} alt='Me' />
       </div>
       <div className='homeTitle'>
-        <div className='homeTitleText'>
-          <Typography variant="h1" component="div">
-            {title}
-          </Typography>
-          <Typography variant="h2" component="div">
-            {subtitle}
-          </Typography>
-        </div>
+        <TitleText title={title} subTitle={subtitle} />
         <div className='homeTitleHighlights'>
           <List>
-            <ListItem sx={{ fontSize: 32 }}>{highlights[0]}</ListItem>
-            <ListItem sx={{ fontSize: 32 }}>{highlights[1]}</ListItem>
-            <ListItem sx={{ fontSize: 32 }}>{highlights[2]}</ListItem>
+            <ListItem sx={{ fontSize: 25 }}>{highlights[0]}</ListItem>
+            <ListItem sx={{ fontSize: 25 }}>{highlights[1]}</ListItem>
+            <ListItem sx={{ fontSize: 25 }}>{highlights[2]}</ListItem>
           </List>
         </div>
       </div>

@@ -1,18 +1,14 @@
-import Typography from '@mui/material/Typography';
+import textJson from '../assets/site_text.json';
+import TitleText from './TitleText';
 
 const ContactPage = () => {
-    return (
-      <div>
-        <div className='homeTitleText'>
-          <Typography variant="h1" component="div">
-            Contacts
-          </Typography>
-          <Typography variant="h2" component="div">
-            My contact information
-          </Typography>
-        </div>
-      </div>
-    );
-  };
+  const contactPageText = textJson.contact
+  const { title } = contactPageText
+  return (
+    <div>
+      <TitleText title={title} />
+    </div>
+  );
+};
   
   export default ContactPage;
