@@ -5,7 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 const ContactListItem = ({ content,icon,url }:{content:string,icon:JSX.Element,url:string}) => { 
 
   return (
-    <ListItem component="a" href={url} target="_blank" rel="noopener noreferrer" sx={{ fontSize: 25 , color: "gray" }}>
+    <ListItem component="a" href={url} target="_blank" rel="noopener noreferrer" sx={{ fontSize: 20 , color: "gray" }}>
       <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText primary={content} sx={{ '& .MuiTypography-root': { fontSize: 'inherit' } }} />
     </ListItem>

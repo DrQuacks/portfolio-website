@@ -1,40 +1,82 @@
 import textJson from '../assets/site_text.json';
 import TitleText from './TitleText';
 import Box from '@mui/material/Box';
-import List from '@mui/material/List';
+// import List from '@mui/material/List';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import ContactListItem from './ContactListItem';
+import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid2';
+import Paper from '@mui/material/Paper';
 
 const ContactPage = () => {
   const contactPageText = textJson.contact
   const { title } = contactPageText
-  const iconSize = 60
+  const iconSize = 50
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    // display: 'flex', // Add flex display
+    // justifyContent: 'center', // Center horizontally
+    // alignItems: 'center', // Center vertically
+    ...theme.applyStyles('dark', {
+      backgroundColor: '#1A2027',
+    }),
+  }));
+  
   return (
     <div className='container'>
       <TitleText title={title} />
       <div className='contactBody'>
-        <div className='contactColumnLeft'>
-          <Box sx={{ width: '100%', maxWidth: 660, bgcolor: 'background.paper' }}>
-            <List>
-              <ContactListItem content={contactPageText.email} url={"mailto:"+contactPageText.email} icon={<EmailIcon sx={{ fontSize: iconSize }}/>} />
-              <ContactListItem content={contactPageText.linkedin} url={"https://"+contactPageText.linkedin} icon={<LinkedInIcon sx={{ fontSize: iconSize }}/>} />
-            </List>
-          </Box>
-        </div>
-        <div className='contactColumnRight'>
-          <Box sx={{ width: '100%', maxWidth: 660, bgcolor: 'background.paper' }}>
-            <List>
-              <ContactListItem content={contactPageText.github} url={"https://"+contactPageText.github} icon={<GitHubIcon sx={{ fontSize: iconSize }}/>} />
-              <ContactListItem content={contactPageText.location} url={"https://www.google.com/maps?api=1&query=San+Francisco"} icon={<LocationCityIcon sx={{ fontSize: iconSize }}/>} />
-            </List>
-          </Box>
-        </div>
+        <Box sx={{ width: '80%' }}>
+          {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}> */}
+          <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">
+            <Grid size={6}>
+              <Item><ContactListItem content={contactPageText.email} url={"mailto:"+contactPageText.email} icon={<EmailIcon sx={{ fontSize: iconSize }}/>} /></Item>
+            </Grid>
+            <Grid size={6}>
+              <Item> <ContactListItem content={contactPageText.github} url={"https://"+contactPageText.github} icon={<GitHubIcon sx={{ fontSize: iconSize }}/>} /></Item>
+            </Grid>
+            <Grid size={6}>
+              <Item><ContactListItem content={contactPageText.linkedin} url={"https://"+contactPageText.linkedin} icon={<LinkedInIcon sx={{ fontSize: iconSize }}/>} /></Item>
+            </Grid>
+            <Grid size={6}>
+              <Item><ContactListItem content={contactPageText.location} url={"https://www.google.com/maps?api=1&query=San+Francisco"} icon={<LocationCityIcon sx={{ fontSize: iconSize }}/>} /></Item>
+            </Grid>
+          </Grid>
+        </Box>
       </div>
     </div>
   );
+  // return (
+  //   <div className='container'>
+  //     <TitleText title={title} />
+  //     <div className='contactBody'>
+  //       <div className='contactColumnLeft'>
+  //         <Box sx={{ width: '100%', maxWidth: 660, bgcolor: 'background.paper' }}>
+  //           <List>
+  //             <ContactListItem content={contactPageText.email} url={"mailto:"+contactPageText.email} icon={<EmailIcon sx={{ fontSize: iconSize }}/>} />
+  //             <ContactListItem content={contactPageText.linkedin} url={"https://"+contactPageText.linkedin} icon={<LinkedInIcon sx={{ fontSize: iconSize }}/>} />
+  //           </List>
+  //         </Box>
+  //       </div>
+  //       <div className='contactColumnRight'>
+  //         <Box sx={{ width: '100%', maxWidth: 660, bgcolor: 'background.paper' }}>
+  //           <List>
+  //             <ContactListItem content={contactPageText.github} url={"https://"+contactPageText.github} icon={<GitHubIcon sx={{ fontSize: iconSize }}/>} />
+  //             <ContactListItem content={contactPageText.location} url={"https://www.google.com/maps?api=1&query=San+Francisco"} icon={<LocationCityIcon sx={{ fontSize: iconSize }}/>} />
+  //           </List>
+  //         </Box>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
   
   export default ContactPage;
