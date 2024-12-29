@@ -4,8 +4,9 @@
         "subtitle":"(with ML/AI experience)",
         "highlights":[
             "Lead Developer at Tech Startup",
+            "Founder of Personal Tutoring Business",
             "PhD in Materials Engineering",
-            "Founder of Personal Tutoring Business"
+            "San Francisco Bay Area"
         ]
     },
     "about":{
@@ -13,8 +14,10 @@
     },
     "contact":{
         "title":"Contact",
-        "content":"You can contact me at: ",
-        "email":"michael.d.kellar@gmail.com"
+        "email":"michael.d.kellar@gmail.com",
+        "linkedin":"linkedin.com/in/michael-d-kellar/",
+        "github":"github.com/DrQuacks",
+        "location":"San Francisco, CA"
     },
     "projects":{
         "title":"Projects",
@@ -32,5 +35,8 @@
                 "description":"This is a description of Project 3."
             }
         ]
+    },
+    "bottomBar":{
+        "tagline":"all let, no const"
     }
 }

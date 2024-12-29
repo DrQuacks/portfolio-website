@@ -17,9 +17,9 @@ const HomePage = () => {
         <TitleText title={title} subTitle={subtitle} />
         <div className='homeTitleHighlights'>
           <List>
-            <ListItem sx={{ fontSize: 25 , color: "gray" }}>{highlights[0]}</ListItem>
-            <ListItem sx={{ fontSize: 25 , color: "gray" }}>{highlights[1]}</ListItem>
-            <ListItem sx={{ fontSize: 25 , color: "gray" }}>{highlights[2]}</ListItem>
+            {highlights.map((highlight: string) => {
+              return <ListItem key={highlight} sx={{ fontSize: 25 , color: "gray" }}>{highlight}</ListItem>
+            })}
           </List>
         </div>
       </div>
