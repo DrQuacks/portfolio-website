@@ -12,6 +12,9 @@
     "about":{
         "title":"About Me"
     },
+    "skills":{
+        "title":"Skills"
+    },
     "contact":{
         "title":"Contact",
         "email":"michael.d.kellar@gmail.com",

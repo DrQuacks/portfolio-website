@@ -4,10 +4,11 @@ import NavigationBar from './Components/NavigationBar'
 import BottomBar from './Components/BottomBar'
 import HomePage from './Components/HomePage'
 import AboutPage from './Components/AboutPage'
+import SkillsPage from './Components/SkillsPage'
 import ProjectsPage from './Components/ProjectsPage'
 import ContactPage from './Components/ContactPage'
 
-const allPages = ['Home', 'About', 'Projects', 'Contact'] as const
+const allPages = ['Home', 'About', 'Skills', 'Projects', 'Contact'] as const
 type PageTuple = typeof allPages
 type Page = PageTuple[number]
 
@@ -15,7 +16,7 @@ function App() {
 
   const [page, setPage] = useState<Page>('Home')
 
-  const MainSection:JSX.Element = page === 'Home' ? <HomePage /> : page === 'About' ? <AboutPage /> : page === 'Projects' ? <ProjectsPage /> : <ContactPage />
+  const MainSection:JSX.Element = page === 'Home' ? <HomePage /> : page === 'About' ? <AboutPage /> : page === 'Skills' ? <SkillsPage /> : page === 'Projects' ? <ProjectsPage /> : <ContactPage />
 
   return (
     <div className="App">
