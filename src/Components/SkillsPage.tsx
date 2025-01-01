@@ -17,7 +17,6 @@ import pyTorchLogo from '../assets/pytorch-logo.webp';
 const SkillsPage = () => {
   const skillsPageText = textJson.skills
   const { title } = skillsPageText
-  //const iconSize = 50
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#fff',
