@@ -13,12 +13,12 @@ const HomePage = () => {
     console.log('debugImg',{src, blur});
     return (
       <img
-        src='/thinkingBW.jpg'
+        src={src}
         style={{
           maxHeight:600,
           maxWidth:"90%",
-          filter: blur ? "blur(20px)" : "none",
-          transition: blur ? "none" : "filter 0.1s ease-out"
+          filter: blur ? "blur(10px)" : "none",
+          transition: blur ? "none" : "filter 0.05s ease-out"
         }}
       />
     );
@@ -28,12 +28,6 @@ const HomePage = () => {
   return (
     <div className='homeBody'>
       <div className='homeImage'>
-        {/* <img style={{maxHeight:600,maxWidth:"90%"}} src={thinkingImageBW} alt='Me' /> */}
-        {/* <img 
-          style={{maxHeight:600,maxWidth:"90%"}} 
-          src= '/thinkingBW.jpg'
-          alt='Me' 
-        /> */}
         <BlurredUpImage />
       </div>
       <div className='homeTitle'>

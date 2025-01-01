@@ -5,14 +5,8 @@ import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
-import tsLogo from '../assets/ts-logo.png';
-import jsLogo from '../assets/js-logo.png';
-import pythonLogo from '../assets/py-logo.png';
-import reactLogo from '../assets/react-logo.png';
-import d3Logo from '../assets/d3-logo.png';
-import numpyLogo from '../assets/numpy-logo.png';
-import pandasLogo from '../assets/pandas-logo.png';
-import pyTorchLogo from '../assets/pytorch-logo.webp';
+import useProgressiveImg from '../hooks/useProgressiveImg';
+
 
 const SkillsPage = () => {
   const skillsPageText = textJson.skills
@@ -29,12 +23,28 @@ const SkillsPage = () => {
     }),
   }));
 
-  const SkillImage = ({text,path}:{text:string,path:string}) => {
+  const BlurredUpSkillImage = ({lowPath,highPath}:{lowPath:string,highPath:string}) => {
+    const {src, blur} = useProgressiveImg(lowPath, highPath);
+    console.log('debugImg',{src, blur});
+    return (
+      <Box
+        component="img"
+        src={src}
+        style={{
+          width: '100%',
+          filter: blur ? "blur(10px)" : "none",
+          transition: blur ? "none" : "filter 0.05s ease-out"
+        }}
+      />
+    );
+  };
+
+  const SkillImage = ({text,path,lowPath}:{text:string,path:string,lowPath:string}) => {
     return (
       <div>
         <Typography variant="h4" component="div">{text}</Typography>
         <br/>
-        <Box component="img" src={path} alt={text} sx={{ width: '100%' }} />
+        <BlurredUpSkillImage lowPath={lowPath} highPath={path}/>
       </div>
     )
   } 
@@ -46,28 +56,28 @@ const SkillsPage = () => {
         <Box sx={{ width: '80%' }}>
           <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">
             <Grid size={3}>
-              <Item><SkillImage text="Javascript" path = {jsLogo}/></Item>
+              <Item><SkillImage text="Javascript" path = '/js-logo.png' lowPath='/js-logo-low.png'/></Item>
             </Grid>
             <Grid size={3}>
-              <Item><SkillImage text="Typescript" path = {tsLogo}/></Item>
+              <Item><SkillImage text="Typescript" path = '/ts-logo.png' lowPath='/ts-logo-low.png'/></Item>
             </Grid>
             <Grid size={3}>
-              <Item><SkillImage text="Python" path = {pythonLogo}/></Item>
+              <Item><SkillImage text="Python" path = 'py-logo.png' lowPath='/py-logo-low.png'/></Item>
             </Grid>
             <Grid size={3}>
-              <Item><SkillImage text="React" path = {reactLogo}/></Item>
+              <Item><SkillImage text="React" path = 'react-logo.png' lowPath='/react-logo-low.png'/></Item>
             </Grid>
             <Grid size={3}>
-              <Item><SkillImage text="d3.js" path = {d3Logo}/></Item>
+              <Item><SkillImage text="d3.js" path = '/d3-logo.png' lowPath='/d3-logo-low.png'/></Item>
             </Grid>
             <Grid size={3}>
-              <Item><SkillImage text="NumPy" path = {numpyLogo}/></Item>
+              <Item><SkillImage text="NumPy" path = '/numpy-logo.png' lowPath='/numpy-logo-low.png'/></Item>
             </Grid>
             <Grid size={3}>
-              <Item><SkillImage text="Pandas" path = {pandasLogo}/></Item>
+              <Item><SkillImage text="Pandas" path = 'pandas-logo.png' lowPath='/pandas-logo-low.png'/></Item>
             </Grid>
             <Grid size={3}>
-              <Item><SkillImage text="PyTorch" path = {pyTorchLogo}/></Item>
+              <Item><SkillImage text="PyTorch" path = '/pytorch-logo.webp' lowPath='/pytorch-logo-low.webp'/></Item>
             </Grid>
 
           </Grid>
