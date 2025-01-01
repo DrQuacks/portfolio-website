@@ -7,8 +7,7 @@ import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
 import tsLogo from '../assets/ts-logo.png';
 import jsLogo from '../assets/js-logo.png';
-// import pythonLogo from '../assets/python-logo.png';
-//import pythonLogo from '/src/assets/python-logo.png';
+import pythonLogo from '../assets/python-logo.png';
 import reactLogo from '../assets/react-logo.png';
 import d3Logo from '../assets/d3-logo.png';
 import numpyLogo from '../assets/numpy-logo.png';
@@ -53,9 +52,9 @@ const SkillsPage = () => {
             <Grid size={3}>
               <Item><SkillImage text="Typescript" path = {tsLogo}/></Item>
             </Grid>
-            {/* <Grid size={3}>
+            <Grid size={3}>
               <Item><SkillImage text="Python" path = {pythonLogo}/></Item>
-            </Grid> */}
+            </Grid>
             <Grid size={3}>
               <Item><SkillImage text="React" path = {reactLogo}/></Item>
             </Grid>
