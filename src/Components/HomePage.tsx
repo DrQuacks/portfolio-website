@@ -9,7 +9,7 @@ const HomePage = () => {
   const { title , subtitle , highlights } = homePageText
 
   const BlurredUpImage = () => {
-    const {src, blur} = useProgressiveImg('/thinkingBW-low.png', '/thinkingBW.jpg');
+    const {src, blur} = useProgressiveImg('/thinkingBW-low.jpg', '/thinkingBW.png');
     console.log('debugImg',{src, blur});
     return (
       <img

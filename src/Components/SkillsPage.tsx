@@ -56,10 +56,10 @@ const SkillsPage = () => {
         <Box sx={{ width: '80%' }}>
           <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">
             <Grid size={3}>
-              <Item><SkillImage text="Javascript" path = '/js-logo.png' lowPath='/js-logo-low.png'/></Item>
+              <Item><SkillImage text="Javascript" path = '/js-logo.png' lowPath='/js-logo-low.jpg'/></Item>
             </Grid>
             <Grid size={3}>
-              <Item><SkillImage text="Typescript" path = '/ts-logo.png' lowPath='/ts-logo-low.png'/></Item>
+              <Item><SkillImage text="Typescript" path = '/ts-logo.png' lowPath='/ts-logo-low.jpg'/></Item>
             </Grid>
             <Grid size={3}>
               <Item><SkillImage text="Python" path = 'py-logo.png' lowPath='/py-logo-low.png'/></Item>
@@ -71,13 +71,13 @@ const SkillsPage = () => {
               <Item><SkillImage text="d3.js" path = '/d3-logo.png' lowPath='/d3-logo-low.png'/></Item>
             </Grid>
             <Grid size={3}>
-              <Item><SkillImage text="NumPy" path = '/numpy-logo.png' lowPath='/numpy-logo-low.png'/></Item>
+              <Item><SkillImage text="NumPy" path = '/numpy-logo.png' lowPath='/numpy-logo-low.jpg'/></Item>
             </Grid>
             <Grid size={3}>
               <Item><SkillImage text="Pandas" path = 'pandas-logo.png' lowPath='/pandas-logo-low.png'/></Item>
             </Grid>
             <Grid size={3}>
-              <Item><SkillImage text="PyTorch" path = '/pytorch-logo.webp' lowPath='/pytorch-logo-low.webp'/></Item>
+              <Item><SkillImage text="PyTorch" path = '/pytorch-logo.webp' lowPath='/pytorch-logo-low.png'/></Item>
             </Grid>
 
           </Grid>
