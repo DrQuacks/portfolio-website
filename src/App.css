@@ -62,28 +62,31 @@
 
 .homeBody {
   display:flex;
-  flex-direction: row;
-  justify-content: space-around;
-  vertical-align: middle;
-}
-
-.homeBodyMobile {
-  display:flex;
   flex-direction: column;
   justify-content: space-around;
   vertical-align: middle;
   align-items: center;
 }
 
-.homeImage {
-  order:1;
-  margin-left: 20px;
+@media screen and (min-width: 576px) {
+  .homeBody {
+    flex-direction: row;
+    align-items: normal;
+  }
 }
 
-.homeImageMobile {
+.homeImage {
   order:1;
   max-width: 60%;
   text-align: center;
+}
+
+@media screen and (min-width: 576px) {
+  .homeImage {
+    margin-left: 20px;
+    max-width: 100%;
+    text-align: start;
+  }
 }
 
 .homeTitle {
@@ -94,11 +97,17 @@
   margin-right: 20px;
 }
 
-.homeTitleMobile {
+.homeTitle {
   order: 2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+@media screen and (min-width: 576px) {
+  .homeTitle {
+    margin-right: 20px;
+  }
 }
 
 .homeTitleText {
