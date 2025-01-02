@@ -29,7 +29,6 @@ const HomePage = () => {
     );
   };
 
-
   return (
     <div className={bodyClass}>
       <div className={imgClass}>
