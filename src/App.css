@@ -67,9 +67,23 @@
   vertical-align: middle;
 }
 
+.homeBodyMobile {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  vertical-align: middle;
+  align-items: center;
+}
+
 .homeImage {
   order:1;
   margin-left: 20px;
+}
+
+.homeImageMobile {
+  order:1;
+  max-width: 60%;
+  text-align: center;
 }
 
 .homeTitle {
@@ -78,6 +92,13 @@
   flex-direction: column;
   justify-content: space-between;
   margin-right: 20px;
+}
+
+.homeTitleMobile {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .homeTitleText {

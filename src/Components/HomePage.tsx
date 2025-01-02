@@ -3,10 +3,15 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import TitleText from './TitleText';
 import useProgressiveImg from '../hooks/useProgressiveImg';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const HomePage = () => {
   const homePageText = textJson.home
   const { title , subtitle , highlights } = homePageText
+  const isMobile = useMediaQuery('(max-width:600px)');
+  const bodyClass = isMobile ? 'homeBodyMobile' : 'homeBody';
+  const imgClass = isMobile ? 'homeImageMobile' : 'homeImage';
+  const titleClass = isMobile ? 'homeTitleMobile' : 'homeTitle';
 
   const BlurredUpImage = () => {
     const {src, blur} = useProgressiveImg('/thinkingBW-low.jpg', '/thinkingBW.png');
@@ -26,11 +31,11 @@ const HomePage = () => {
 
 
   return (
-    <div className='homeBody'>
-      <div className='homeImage'>
+    <div className={bodyClass}>
+      <div className={imgClass}>
         <BlurredUpImage />
       </div>
-      <div className='homeTitle'>
+      <div className={titleClass}>
         <TitleText title={title} subTitle={subtitle} />
         <div className='homeTitleHighlights'>
           <List>
