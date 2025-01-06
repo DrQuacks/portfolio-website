@@ -20,7 +20,7 @@ function NavigationBar(
     <Box className="NavBarDivNotHidden" sx={{ flexGrow: 1}}>
       <AppBar position="static" sx={{backgroundColor: 'black' }}>
         <Toolbar>
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
             Michael Kellar
           </Typography>
           {Buttons}
