@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import textJson from '../assets/site_text.json';
 import TitleText from './TitleText';
 import { styled } from '@mui/material/styles';
@@ -7,9 +8,12 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import { Typography } from '@mui/material';
 
+type ActiveProject = 'TrialTrace' | 'Stock Market Predictions' | 'Mixed Redox Couple Batteries' | 'none'
 const ProjectsPage = () => {
   const projectsPageText = textJson.projects
   const { title } = projectsPageText
+
+  const [activeProject,setActiveProject] = useState<ActiveProject>('none');
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#fff',
@@ -86,8 +90,9 @@ const ProjectsPage = () => {
     transition: theme.transitions.create('opacity'),
   }));
 
-  const ProjectButton = ({title,lowPath}:{title:string,lowPath:string}) => {
+  const ProjectButton = ({title,lowPath}:{title:ActiveProject,lowPath:string}) => {
     console.log('debugImg',{title,lowPath});
+    const filterType = activeProject === title ? 'none' : 'blur(3px)';
     return (
       <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 500, width: '100%' }}>
         <ImageButton
@@ -96,20 +101,25 @@ const ProjectsPage = () => {
           style={{
             width: '100%',
           }}
+          onClick={() => activeProject === title ? setActiveProject('none') : setActiveProject(title)}
         >
-          <ImageSrc style={{ backgroundImage: `url(${lowPath})`, filter: "blur(3px)" }} />
+          <ImageSrc style={{ backgroundImage: `url(${lowPath})`, filter: filterType}} />
           <ImageBackdrop className="MuiImageBackdrop-root" />
           <Image>
             <Typography
               component="span"
               variant="subtitle1"
               color="inherit"
-              sx={(theme) => ({
-                position: 'relative',
-                p: 4,
-                pt: 2,
-                pb: `calc(${theme.spacing(1)} + 6px)`,
-              })}
+              sx={(theme) => (activeProject !== title ? 
+                {
+                  position: 'relative',
+                  p: 4,
+                  pt: 2,
+                  pb: `calc(${theme.spacing(1)} + 6px)`,
+                } : {
+                  opacity: 0
+                }
+              )}
             >
               {title}
               <ImageMarked className="MuiImageMarked-root" />
@@ -120,17 +130,37 @@ const ProjectsPage = () => {
     );
   };
 
+  const ProjectDescription = ({title}:{title:ActiveProject}) => {
+    console.log('debugImg',{title});
+    return (
+      <Typography variant="h4" component="div">{title}</Typography>
+    )
+  }
+
   return (
     <div className='container'>
       <TitleText title={title} />
       <div className='contactBody'>
-        <Box sx={{ width: '80%' }}>
+        <Box sx={{ width: '80%', overflow: 'clip' }}>
+        {/* <Box sx={{ width: '80%' }}> */}
           <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">
             <Grid size={12}>
-              <Item><ProjectButton title="TrialTrace" lowPath='/trialtrace-ss-low.jpg'/></Item>
+              <Item>
+                <ProjectButton title="TrialTrace" lowPath='/trialtrace-ss-low.jpg'/>
+                {activeProject === "TrialTrace" && <ProjectDescription title = "TrialTrace"/>}
+              </Item>
             </Grid>
             <Grid size={12}>
-              <Item><ProjectButton title="Stock Market Predictions" lowPath='/stock-project-ss-low.jpg'/></Item>
+              <Item>
+                <ProjectButton title="Stock Market Predictions" lowPath='/stock-project-ss-low.jpg'/>
+                {activeProject === "Stock Market Predictions" && <ProjectDescription title = "Stock Market Predictions"/>}
+              </Item>
+            </Grid>
+            <Grid size={12}>
+              <Item>
+                <ProjectButton title="Mixed Redox Couple Batteries" lowPath='/MRC-Charge-low.jpg'/>
+                {activeProject === "Mixed Redox Couple Batteries" && <ProjectDescription title = "Mixed Redox Couple Batteries"/>}
+              </Item>
             </Grid>
           </Grid>
         </Box>
