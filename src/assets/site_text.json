@@ -26,15 +26,18 @@
         "title":"Projects",
         "projects":[
             {
-                "name":"Project 1",
+                "name":"TrialTrace",
+                "path":"/trialtrace-ss-low.jpg",
                 "description":"This is a description of Project 1."
             },
             {
-                "name":"Project 2",
+                "name":"Stock Market Predictions",
+                "path":"/stock-project-ss-low.jpg",
                 "description":"This is a description of Project 2."
             },
             {
-                "name":"Project 3",
+                "name":"Mixed Redox Couple Batteries",
+                "path":"/MRC-Charge-low.jpg",
                 "description":"This is a description of Project 3."
             }
         ]

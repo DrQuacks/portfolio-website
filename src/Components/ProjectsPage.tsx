@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import textJson from '../assets/site_text.json';
 import TitleText from './TitleText';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
@@ -9,8 +8,46 @@ import ButtonBase from '@mui/material/ButtonBase';
 import { Typography } from '@mui/material';
 
 type ActiveProject = 'TrialTrace' | 'Stock Market Predictions' | 'Mixed Redox Couple Batteries' | 'none'
+
+const projectsPageText: {
+  title: string;
+  projects: {
+      name: ActiveProject;
+      path: string;
+      description: string;
+  }[];
+} = {
+  "title":"Projects",
+  "projects":[
+      {
+          "name":"TrialTrace",
+          "path":"/trialtrace-ss-low.jpg",
+          "description":`TrialTrace is a startup I've worked at as a Frontend Developer. Mostly I write React code
+          for user input, specifically hook based React, and then use d3.js to provide the output. The codebase largely
+          is written in TypeScript. The scope of my work centers around being given specs for functionality, and I write
+          code and build components to implement that functionality. I have been the lead developer for the past year and
+          a half, and have fully written a handful of new features, as well as adding better usability into legacy components`
+      },
+      {
+          "name":"Stock Market Predictions",
+          "path":"/stock-project-ss-low.jpg",
+          "description":`As a way to get more experience with machine learning, I've been working on a project to predict stock prices. 
+          The backend of the project is written in Python, and uses the numpy, pandas, and scikit-learn libraries. 
+          The frontend is written in Typescript and React, and like my work for TrialTrace, uses d3.js. I am currently learning how to use
+          PyTorch to implement a more advanced neural net than I get out-of-the-box with scikit-learn.`
+      },
+      {
+          "name":"Mixed Redox Couple Batteries",
+          "path":"/MRC-Charge-low.jpg",
+          "description":`My work in graduate school focused on anovel design for lithium-ion battery electrodes. Battery electrodes typically suffer
+          from uneven current distributions, meaning certain parts of the electrode are underutilized, and other parts are overutilized. My design
+          utilized putting a more energetically favorable material in parts of an electrode known to be underutilized, in order to increase
+          capacities at high rates`
+      }
+  ]
+}
+
 const ProjectsPage = () => {
-  const projectsPageText = textJson.projects
   const { title } = projectsPageText
 
   const [activeProject,setActiveProject] = useState<ActiveProject>('none');
@@ -130,10 +167,13 @@ const ProjectsPage = () => {
     );
   };
 
-  const ProjectDescription = ({title}:{title:ActiveProject}) => {
+  const ProjectDescription = ({title,text}:{title:ActiveProject,text:string}) => {
     console.log('debugImg',{title});
     return (
-      <Typography variant="h4" component="div">{title}</Typography>
+      <div>
+        <Typography variant="h4" component="div">{title}</Typography>
+        <Typography variant="body1" component="div">{text}</Typography>
+      </div>
     )
   }
 
@@ -142,26 +182,17 @@ const ProjectsPage = () => {
       <TitleText title={title} />
       <div className='contactBody'>
         <Box sx={{ width: '80%', overflow: 'clip' }}>
-        {/* <Box sx={{ width: '80%' }}> */}
           <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">
-            <Grid size={12}>
-              <Item>
-                <ProjectButton title="TrialTrace" lowPath='/trialtrace-ss-low.jpg'/>
-                {activeProject === "TrialTrace" && <ProjectDescription title = "TrialTrace"/>}
-              </Item>
-            </Grid>
-            <Grid size={12}>
-              <Item>
-                <ProjectButton title="Stock Market Predictions" lowPath='/stock-project-ss-low.jpg'/>
-                {activeProject === "Stock Market Predictions" && <ProjectDescription title = "Stock Market Predictions"/>}
-              </Item>
-            </Grid>
-            <Grid size={12}>
-              <Item>
-                <ProjectButton title="Mixed Redox Couple Batteries" lowPath='/MRC-Charge-low.jpg'/>
-                {activeProject === "Mixed Redox Couple Batteries" && <ProjectDescription title = "Mixed Redox Couple Batteries"/>}
-              </Item>
-            </Grid>
+            {projectsPageText.projects.map((project) => {
+              return (
+                <Grid size={12}>
+                  <Item>
+                    <ProjectButton title={project.name as ActiveProject} lowPath={project.path}/>
+                    {activeProject === project.name && <ProjectDescription title = {project.name} text = {project.description}/>}
+                  </Item>
+                </Grid>
+              )
+            })}
           </Grid>
         </Box>
       </div>
