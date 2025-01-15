@@ -1,21 +1,39 @@
 import textJson from '../assets/site_text.json';
 import TitleText from './TitleText';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
-import useProgressiveImg from '../hooks/useProgressiveImg';
+import Popover from '@mui/material/Popover';
+// import useProgressiveImg from '../hooks/useProgressiveImg';
 
 
 const SkillsPage = () => {
   const skillsPageText = textJson.skills
   const { title } = skillsPageText
 
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
+  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
+    //console.log('debugImgHover',{event});
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+    console.log('debugImgHoverClose');
+
+  };
+
+  const open = Boolean(anchorEl);
+
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
+    minWidth: '175px',
     textAlign: 'center',
     color: theme.palette.text.secondary,
     ...theme.applyStyles('dark', {
@@ -23,28 +41,88 @@ const SkillsPage = () => {
     }),
   }));
 
-  const BlurredUpSkillImage = ({lowPath,highPath}:{lowPath:string,highPath:string}) => {
-    const {src, blur} = useProgressiveImg(lowPath, highPath);
-    console.log('debugImg',{src, blur});
-    return (
-      <Box
-        component="img"
-        src={src}
-        style={{
-          width: '100%',
-          filter: blur ? "blur(10px)" : "none",
-          transition: blur ? "none" : "filter 0.05s ease-out"
-        }}
-      />
-    );
-  };
+  // const BlurredUpSkillImage = ({lowPath,highPath}:{lowPath:string,highPath:string}) => {
+  //   const {src, blur} = useProgressiveImg(lowPath, highPath);
+  //   console.log('debugImg',{src, blur});
+  //   return (
+  //     <Box
+  //       component="img"
+  //       src={src}
+  //       // onMouseEnter={handlePopoverOpen}
+  //       // onMouseLeave={handlePopoverClose}
+  //       style={{
+  //         width: '100%',
+  //         filter: blur ? "blur(10px)" : "none",
+  //         transition: blur ? "none" : "filter 0.05s ease-out"
+  //       }}
+  //     />
+  //   );
+  // };
+
+  // const SkillImage = ({text,path,lowPath}:{text:string,path:string,lowPath:string}) => {
+  //   return (
+  //     <div
+  //       onMouseEnter={handlePopoverOpen}
+  //       onMouseLeave={handlePopoverClose}
+  //     >
+  //       <Typography variant="h4" component="div" sx={{ overflow: 'hidden' }}>{text}</Typography>
+  //       <br/>
+  //       <BlurredUpSkillImage lowPath={lowPath} highPath={path}/>
+  //       <Popover
+  //         id="mouse-over-popover"
+  //         sx={{ pointerEvents: 'none' }}
+  //         open={open}
+  //         anchorEl={anchorEl}
+  //         anchorOrigin={{
+  //           vertical: 'bottom',
+  //           horizontal: 'left',
+  //         }}
+  //         transformOrigin={{
+  //           vertical: 'top',
+  //           horizontal: 'left',
+  //         }}
+  //         // onClose={handlePopoverClose}
+  //         disableRestoreFocus
+  //       >
+  //         <Typography sx={{ p: 1 }}>I use Popover.</Typography>
+  //       </Popover>
+  //     </div>
+  //   )
+  // } 
 
   const SkillImage = ({text,path,lowPath}:{text:string,path:string,lowPath:string}) => {
+    console.log(lowPath)
     return (
       <div>
-        <Typography variant="h4" component="div">{text}</Typography>
+        <Typography variant="h4" component="div" sx={{ overflow: 'hidden' }}>{text}</Typography>
         <br/>
-        <BlurredUpSkillImage lowPath={lowPath} highPath={path}/>
+        <Box
+          component="img"
+          src={path}
+          onMouseEnter={handlePopoverOpen}
+          onMouseLeave={handlePopoverClose}
+          style={{
+            width: '100%',
+          }}
+        />
+        <Popover
+          id="mouse-over-popover"
+          sx={{ pointerEvents: 'none' }}
+          open={open}
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          onClose={handlePopoverClose}
+          disableRestoreFocus
+        >
+          <Typography sx={{ p: 1 }}>I use Popover.</Typography>
+        </Popover>
       </div>
     )
   } 
