@@ -1,6 +1,6 @@
 import textJson from '../assets/site_text.json';
 import TitleText from './TitleText';
-import { useState } from 'react';
+import { useState , useRef } from 'react';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -14,20 +14,26 @@ const SkillsPage = () => {
   const skillsPageText = textJson.skills
   const { title } = skillsPageText
 
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [openedPopover, setOpenedPopover] = useState(false)
+  const popoverAnchor = useRef(null);
+
+  //const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
-    //console.log('debugImgHover',{event});
-    setAnchorEl(event.currentTarget);
+    console.log('debugImgHover',{event});
+    // setAnchorEl(event.currentTarget);
+    setOpenedPopover(true)
   };
 
   const handlePopoverClose = () => {
-    setAnchorEl(null);
+    //setAnchorEl(null);
+    setOpenedPopover(false)
     console.log('debugImgHoverClose');
 
   };
 
-  const open = Boolean(anchorEl);
+  // const open = Boolean(anchorEl);
+  const id = openedPopover ? 'skill-popper' : undefined;
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#fff',
@@ -93,23 +99,31 @@ const SkillsPage = () => {
   const SkillImage = ({text,path,lowPath}:{text:string,path:string,lowPath:string}) => {
     console.log(lowPath)
     return (
-      <div>
+      <div
+        ref={popoverAnchor}
+        onMouseEnter={handlePopoverOpen}
+        //onMouseOver={handlePopoverOpen}
+        onMouseLeave={handlePopoverClose}
+      >
         <Typography variant="h4" component="div" sx={{ overflow: 'hidden' }}>{text}</Typography>
         <br/>
         <Box
           component="img"
           src={path}
-          onMouseEnter={handlePopoverOpen}
-          onMouseLeave={handlePopoverClose}
+          // onMouseEnter={handlePopoverOpen}
+          // onMouseOver={handlePopoverOpen}
+          // onMouseLeave={handlePopoverClose}
           style={{
             width: '100%',
           }}
         />
         <Popover
-          id="mouse-over-popover"
+          id={id}
           sx={{ pointerEvents: 'none' }}
-          open={open}
-          anchorEl={anchorEl}
+          open={openedPopover}
+          anchorEl={popoverAnchor.current}
+          // open={open}
+          // anchorEl={anchorEl}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'left',
@@ -120,6 +134,7 @@ const SkillsPage = () => {
           }}
           onClose={handlePopoverClose}
           disableRestoreFocus
+          // disablePortal
         >
           <Typography sx={{ p: 1 }}>I use Popover.</Typography>
         </Popover>
