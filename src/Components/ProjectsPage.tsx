@@ -25,8 +25,8 @@ const projectsPageText: {
           "description":`TrialTrace is a startup I've worked at as a Frontend Developer. Mostly I write React code
           for user input, specifically hook based React, and then use d3.js to provide the output. The codebase largely
           is written in TypeScript. The scope of my work centers around being given specs for functionality, and I write
-          code and build components to implement that functionality. I have been the lead developer for the past year and
-          a half, and have fully written a handful of new features, as well as adding better usability into legacy components`
+          code and build components to implement that functionality. I have been the lead developer for the past two years, 
+          and have fully written a handful of new features, as well as adding better usability into legacy components`
       },
       {
           "name":"Stock Market Predictions",

@@ -20,42 +20,46 @@ const skillsPageText: {
       {
           "name":"Javascript",
           "path":'/js-logo.png',
-          "description":`I've worked with JS`
+          "description":`I'm fairly fluent in Javascript. I've been using it extensively for my job at TrialTrace, as well as the frontend for my ML side project,
+          and also for this website!`
       },
       {
           "name":"Typescript",
           "path":'/ts-logo.png',
-          "description":`I've also worked with typescript`
+          "description":`I'm also fairly fluent in Typescript for all the same reasons I listed in my Javascript blurb. Even this website is written entirely in
+          Typescript! The first real programming language I learned was Java, and so I still naturally think about coding as being typed.`
       },
       {
           "name":"Python",
           "path":'/py-logo.png',
-          "description":`Sometimes even Python`
+          "description":`I have been learning and working with Python as a means to work with ML/AI. Much of it I initially learned by completing the Dataquest
+          online course, and I've been using it for the back end on my ML side project.`
       },
       {
           "name":"React",
           "path":'/react-logo.png',
-          "description":`And also React`
+          "description":`Just like my work with JS/TS, most of my frontend work has utilized React. In fact, that is the framework for this website! Specifically I am
+          most familiar with hook-based React, and I've set up websites both with Create-React-App and Vite.`
       },
       {
           "name":"d3.js",
           "path":'/d3-logo.png',
-          "description":`Even d3.js`
+          "description":`I use d3.js for the frontend visualizations in both my work for TrialTrace as well as my ML Stock Market Project.`
       },
       {
           "name":"NumPy",
           "path":'/numpy-logo.png',
-          "description":`I've spent time with NumPy`
+          "description":`I learned NumPy through the Dataquest online course, and still use it in the back end of my ML Stock Market Project.`
       },
       {
           "name":"Pandas",
           "path":'/pandas-logo.png',
-          "description":`Pandas, not the animal`
+          "description":`I learned NumPy through the Dataquest online course, and still use it in the back end of my ML Stock Market Project.`
       },
       {
           "name":"PyTorch",
           "path":'/pytorch-logo.webp',
-          "description":`I'm starting to learn pytorch`
+          "description":`I have been learning PyTorch over the past year, and am beginning to implement it into my ML Stock Market Project to replace Scikit-Learn.`
       }
   ]
 }
@@ -129,7 +133,7 @@ const SkillsPage = () => {
         disableRestoreFocus
         disablePortal
       >
-        <Typography sx={{ p: 1 }}>{popoverText}</Typography>
+        <Typography sx={{ p: 1, maxWidth: 500 }}>{popoverText}</Typography>
       </Popover>
     )
   }
