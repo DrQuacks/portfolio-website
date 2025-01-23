@@ -1,4 +1,3 @@
-import textJson from '../assets/site_text.json';
 import TitleText from './TitleText';
 import { useState , useRef } from 'react';
 import Box from '@mui/material/Box';
@@ -8,8 +7,60 @@ import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
 import Popover from '@mui/material/Popover';
 
+const skillsPageText: {
+  title: string;
+  projects: {
+      name: string;
+      path: string;
+      description: string;
+  }[];
+} = {
+  "title":"Skills",
+  "projects":[
+      {
+          "name":"Javascript",
+          "path":'/js-logo.png',
+          "description":`I've worked with JS`
+      },
+      {
+          "name":"Typescript",
+          "path":'/ts-logo.png',
+          "description":`I've also worked with typescript`
+      },
+      {
+          "name":"Python",
+          "path":'/py-logo.png',
+          "description":`Sometimes even Python`
+      },
+      {
+          "name":"React",
+          "path":'/react-logo.png',
+          "description":`And also React`
+      },
+      {
+          "name":"d3.js",
+          "path":'/d3-logo.png',
+          "description":`Even d3.js`
+      },
+      {
+          "name":"NumPy",
+          "path":'/numpy-logo.png',
+          "description":`I've spent time with NumPy`
+      },
+      {
+          "name":"Pandas",
+          "path":'/pandas-logo.png',
+          "description":`Pandas, not the animal`
+      },
+      {
+          "name":"PyTorch",
+          "path":'/pytorch-logo.webp',
+          "description":`I'm starting to learn pytorch`
+      }
+  ]
+}
+
 const SkillsPage = () => {
-  const skillsPageText = textJson.skills
   const { title } = skillsPageText
 
   const [openedPopover, setOpenedPopover] = useState(false)
@@ -63,82 +114,6 @@ const SkillsPage = () => {
     )
   } 
 
-  // return (
-  //   <div className='container'>
-  //     <TitleText title={title} />
-  //     <div className='contactBody'
-  //       ref={popoverAnchor}
-  //       onMouseEnter={handlePopoverOpen}
-  //       onMouseLeave={handlePopoverClose}
-  //     >
-  //       <Box sx={{ width: '80%' }}>
-  //         <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">
-  //           <Grid size={3}>
-  //             <Item ><SkillImage text="Javascript" path = '/js-logo.png' lowPath='/js-logo-low.jpg'/></Item>
-  //           </Grid>
-  //           <Grid size={3}>
-  //             <Item><SkillImage text="Typescript" path = '/ts-logo.png' lowPath='/ts-logo-low.jpg'/></Item>
-  //           </Grid>
-  //           <Grid size={3}>
-  //             <Item><SkillImage text="Python" path = 'py-logo.png' lowPath='/py-logo-low.png'/></Item>
-  //           </Grid>
-  //           <Grid size={3}>
-  //             <Item><SkillImage text="React" path = 'react-logo.png' lowPath='/react-logo-low.png'/></Item>
-  //           </Grid>
-  //           <Grid size={3}>
-  //             <Item><SkillImage text="d3.js" path = '/d3-logo.png' lowPath='/d3-logo-low.png'/></Item>
-  //           </Grid>
-  //           <Grid size={3}>
-  //             <Item><SkillImage text="NumPy" path = '/numpy-logo.png' lowPath='/numpy-logo-low.jpg'/></Item>
-  //           </Grid>
-  //           <Grid size={3}>
-  //             <Item><SkillImage text="Pandas" path = 'pandas-logo.png' lowPath='/pandas-logo-low.png'/></Item>
-  //           </Grid>
-  //           <Grid size={3}>
-  //             <Item><SkillImage text="PyTorch" path = '/pytorch-logo.webp' lowPath='/pytorch-logo-low.png'/></Item>
-  //           </Grid>
-
-  //         </Grid>
-  //       </Box>
-  //     </div>
-  //     <Popover
-  //       id={id}
-  //       sx={{ pointerEvents: 'none' }}
-  //       open={openedPopover}
-  //       // className={classes.popover}
-  //       // classes={{
-  //       //   paper: classes.popoverContent,
-  //       // }}
-  //       anchorEl={popoverAnchor.current}
-  //       anchorOrigin={{
-  //         vertical: 'bottom',
-  //         horizontal: 'right'
-  //       }}
-  //       // transformOrigin={{
-  //       //   vertical: 'top',
-  //       //   horizontal: 'left',
-  //       // }}
-  //       onClose={handlePopoverClose}
-  //       disableRestoreFocus
-  //       disablePortal
-  //     >
-  //       <Typography sx={{ p: 1 }}>I use Popover too.</Typography>
-  //     </Popover>
-  //   </div>
-  // );
-
-  // const GridItem = ({text,path,lowPath}:{text:string,path:string,lowPath:string}) => {
-  //   return (<Grid size={3}>
-  //     <div
-  //         ref={popoverAnchor}
-  //         onMouseEnter={handlePopoverOpen}
-  //         onMouseLeave={handlePopoverClose}
-  //     >
-  //       <Item><SkillImage text={text} path = {path} lowPath={lowPath}/></Item>
-  //     </div>
-  //   </Grid>)
-  // }
-
   const SkillPopover = () => {
     return(
       <Popover
@@ -154,56 +129,31 @@ const SkillsPage = () => {
         disableRestoreFocus
         disablePortal
       >
-        <Typography sx={{ p: 1 }}>I use {popoverText} too.</Typography>
+        <Typography sx={{ p: 1 }}>{popoverText}</Typography>
       </Popover>
     )
   }
-  
+
   return (
     <div className='container'>
       <TitleText title={title} />
       <div className='contactBody'>
         <Box sx={{ width: '80%' }}>
           <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">
-            <Grid size={3}>
-              <div
-                  ref={popoverAnchor}
-                  onMouseEnter={(e) => handlePopoverOpen(e,'javascript')}
-                  onMouseLeave={handlePopoverClose}
-              >
-                <Item><SkillImage text="Javascript" path = '/js-logo.png' lowPath='/js-logo-low.jpg'/></Item>
-              </div>
-              <SkillPopover/>
-            </Grid>
-            <Grid size={3}>
-              <div
-                  ref={popoverAnchor}
-                  onMouseEnter={(e) => handlePopoverOpen(e,'typescript')}
-                  onMouseLeave={handlePopoverClose}
-              >
-                <Item><SkillImage text="Typescript" path = '/ts-logo.png' lowPath='/ts-logo-low.jpg'/></Item>
-              </div>
-              <SkillPopover/>
-            </Grid>
-            <Grid size={3}>
-              <Item><SkillImage text="Python" path = 'py-logo.png' lowPath='/py-logo-low.png'/></Item>
-            </Grid>
-            <Grid size={3}>
-              <Item><SkillImage text="React" path = 'react-logo.png' lowPath='/react-logo-low.png'/></Item>
-            </Grid>
-            <Grid size={3}>
-              <Item><SkillImage text="d3.js" path = '/d3-logo.png' lowPath='/d3-logo-low.png'/></Item>
-            </Grid>
-            <Grid size={3}>
-              <Item><SkillImage text="NumPy" path = '/numpy-logo.png' lowPath='/numpy-logo-low.jpg'/></Item>
-            </Grid>
-            <Grid size={3}>
-              <Item><SkillImage text="Pandas" path = 'pandas-logo.png' lowPath='/pandas-logo-low.png'/></Item>
-            </Grid>
-            <Grid size={3}>
-              <Item><SkillImage text="PyTorch" path = '/pytorch-logo.webp' lowPath='/pytorch-logo-low.png'/></Item>
-            </Grid>
-
+            {skillsPageText.projects.map((project) =>{
+              return(
+                <Grid size={3}>
+                  <div
+                      ref={popoverAnchor}
+                      onMouseEnter={(e) => handlePopoverOpen(e,project.description)}
+                      onMouseLeave={handlePopoverClose}
+                  >
+                    <Item><SkillImage text={project.name} path={project.path} lowPath={project.path}/></Item>
+                  </div>
+                  <SkillPopover/>
+                </Grid>
+              )
+            })}
           </Grid>
         </Box>
       </div>
