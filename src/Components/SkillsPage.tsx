@@ -20,7 +20,7 @@ const SkillsPage = () => {
   //const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
-    console.log('debugImgHover',{event});
+    console.log('debugImgHover',{event,popoverAnchor});
     // setAnchorEl(event.currentTarget);
     setOpenedPopover(true)
   };
@@ -96,6 +96,8 @@ const SkillsPage = () => {
   //   )
   // } 
 
+  const classes = useStyles();
+
   const SkillImage = ({text,path,lowPath}:{text:string,path:string,lowPath:string}) => {
     console.log(lowPath)
     return (
@@ -121,17 +123,19 @@ const SkillsPage = () => {
           id={id}
           sx={{ pointerEvents: 'none' }}
           open={openedPopover}
+          className={classes.popover}
+          classes={{
+            paper: classes.popoverContent,
+          }}
           anchorEl={popoverAnchor.current}
-          // open={open}
-          // anchorEl={anchorEl}
           anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'left',
+            horizontal: 'left'
           }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'left',
-          }}
+          // transformOrigin={{
+          //   vertical: 'top',
+          //   horizontal: 'left',
+          // }}
           onClose={handlePopoverClose}
           disableRestoreFocus
           // disablePortal
