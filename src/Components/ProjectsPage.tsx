@@ -24,7 +24,7 @@ const projectsPageText: {
           "path":"/trialtrace-ss-low.jpg",
           "description":`TrialTrace is a startup I've worked at as a Frontend Developer. Mostly I write React code
           for user input, specifically hook based React, and then use d3.js to provide the output. The codebase largely
-          is written in TypeScript. The scope of my work centers around being given specs for functionality, and I write
+          is written in TypeScript. The scope of my work centers around being given specs for functionality of the app, and I write
           code and build components to implement that functionality. I have been the lead developer for the past two years, 
           and have fully written a handful of new features, as well as adding better usability into legacy components`
       },
@@ -39,7 +39,7 @@ const projectsPageText: {
       {
           "name":"Mixed Redox Couple Batteries",
           "path":"/MRC-Charge-low.jpg",
-          "description":`My work in graduate school focused on anovel design for lithium-ion battery electrodes. Battery electrodes typically suffer
+          "description":`My work in graduate school focused on a novel design for lithium-ion battery electrodes. Battery electrodes typically suffer
           from uneven current distributions, meaning certain parts of the electrode are underutilized, and other parts are overutilized. My design
           utilized putting a more energetically favorable material in parts of an electrode known to be underutilized, in order to increase
           capacities at high rates`
@@ -181,7 +181,7 @@ const ProjectsPage = () => {
     <div className='container'>
       <TitleText title={title} />
       <div className='contactBody'>
-        <Box sx={{ width: '80%', overflow: 'clip' }}>
+        <Box sx={{ width: {xs:'100%',sm:'80%'}, overflow: 'clip' }}>
           <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">
             {projectsPageText.projects.map((project) => {
               return (

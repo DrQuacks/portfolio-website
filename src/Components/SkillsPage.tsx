@@ -20,13 +20,13 @@ const skillsPageText: {
       {
           "name":"Javascript",
           "path":'/js-logo.png',
-          "description":`I'm fairly fluent in Javascript. I've been using it extensively for my job at TrialTrace, as well as the frontend for my ML side project,
+          "description":`I am fairly fluent in Javascript. I've been using it extensively for my job at TrialTrace, as well as the frontend for my ML side project,
           and also for this website!`
       },
       {
           "name":"Typescript",
           "path":'/ts-logo.png',
-          "description":`I'm also fairly fluent in Typescript for all the same reasons I listed in my Javascript blurb. Even this website is written entirely in
+          "description":`I am also fairly fluent in Typescript for all the same reasons I listed in my Javascript blurb. Even this website is written entirely in
           Typescript! The first real programming language I learned was Java, and so I still naturally think about coding as being typed.`
       },
       {
