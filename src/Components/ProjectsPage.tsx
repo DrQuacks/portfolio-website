@@ -60,9 +60,11 @@ const ProjectsPage = () => {
     color: theme.palette.text.secondary,
     display: 'flex',
     flexDirection: 'column',
+    justifySelf:'center',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%', // Ensure it stretches to the container width
+    // width: '100%', // Ensure it stretches to the container width
+    width: '90%', // Ensure it stretches to the container width
     wordWrap: 'break-word', // Ensure text wraps properly
     ...theme.applyStyles('dark', {
       backgroundColor: '#1A2027',
@@ -174,28 +176,35 @@ const ProjectsPage = () => {
     );
   };
 
-  const ProjectDescription = ({title,text}:{title:ActiveProject,text:string}) => {
-    console.log('debugImg',{title});
+  const ProjectDescription = ({ title, text }: { title: ActiveProject; text: string }) => {
+    console.log('debugImg', { title });
     return (
       <div>
-        <Typography variant="h4" component="div">{title}</Typography>
-        <Typography variant="body1" component="div">{text}</Typography>
+        <Typography variant="h4" component="div" width='100%'>
+          {title}
+        </Typography>
+        <Typography variant="body1" component="div" width='100%'>
+          {text}
+        </Typography>
       </div>
-    )
-  }
+    );
+  };
   console.log('update check 3')
 
   return (
     <div className='container'>
       <TitleText title={title} />
       <div className='contactBody'>
-        <Box sx={{ width: {xs:'90%',sm:'80%'}, maxWidth:'100%', overflow: 'clip', padding: 1 }}>
-          <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">
+        {/* <Box sx={{ width: {xs:'90%',sm:'80%'}, maxWidth:'100%', overflow: 'clip', padding: 1 }}> */}
+        {/* <Box sx={{ width:'100%', overflow: 'clip'}}> */}
+        <Box className = 'outerBox' sx={{ width:'90%'}} justifyContent="flex-end">
+          {/* <Grid className = 'outerGrid' container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center"> */}
+          <Grid className = 'outerGrid' container spacing={{ xs: 2, md: 4 }} justifyContent="center">
             {projectsPageText.projects.map((project) => {
               return (
-                <Grid size={12}>
-                  <Item>
-                    <Box sx={{ width: '100%'}}> {/* Shared container */}
+                <Grid className = 'innerGrid' size={12} justifyContent="center" >
+                  <Item className = 'item'>
+                    <Box className = 'innerBox' sx={{ width: '100%'}}>
                       <ProjectButton title={project.name as ActiveProject} lowPath={project.path}/>
                       {activeProject === project.name && <ProjectDescription title = {project.name} text = {project.description}/>}
                     </Box>
