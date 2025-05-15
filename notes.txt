@@ -1,1 +1,0 @@
-Projects page formatting is cutting off on mobile version. Buttons aren't centered.

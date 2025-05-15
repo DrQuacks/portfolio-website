@@ -58,6 +58,12 @@ const ProjectsPage = () => {
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%', // Ensure it stretches to the container width
+    wordWrap: 'break-word', // Ensure text wraps properly
     ...theme.applyStyles('dark', {
       backgroundColor: '#1A2027',
     }),
@@ -131,7 +137,8 @@ const ProjectsPage = () => {
     console.log('debugImg',{title,lowPath});
     const filterType = activeProject === title ? 'none' : 'blur(3px)';
     return (
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 500, width: '100%' }}>
+      // <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 500, width: '100%' }}>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 200, width: '100%' }}>
         <ImageButton
           focusRipple
           key={title}
@@ -171,24 +178,29 @@ const ProjectsPage = () => {
     console.log('debugImg',{title});
     return (
       <div>
-        <Typography variant="h4" component="div">{title}</Typography>
-        <Typography variant="body1" component="div">{text}</Typography>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 200, width: '100%' }}>
+          <Typography variant="h4" component="div">{title}</Typography>
+          <Typography variant="body1" component="div">{text}</Typography>
+        </Box>
       </div>
     )
   }
+  console.log('update check 3')
 
   return (
     <div className='container'>
       <TitleText title={title} />
       <div className='contactBody'>
-        <Box sx={{ width: {xs:'100%',sm:'80%'}, overflow: 'clip' }}>
+        <Box sx={{ width: {xs:'90%',sm:'80%'}, maxWidth:'100%', overflow: 'clip', padding: 1 }}>
           <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">
             {projectsPageText.projects.map((project) => {
               return (
                 <Grid size={12}>
                   <Item>
-                    <ProjectButton title={project.name as ActiveProject} lowPath={project.path}/>
-                    {activeProject === project.name && <ProjectDescription title = {project.name} text = {project.description}/>}
+                    <Box sx={{ width: '100%'}}> {/* Shared container */}
+                      <ProjectButton title={project.name as ActiveProject} lowPath={project.path}/>
+                      {activeProject === project.name && <ProjectDescription title = {project.name} text = {project.description}/>}
+                    </Box>
                   </Item>
                 </Grid>
               )
