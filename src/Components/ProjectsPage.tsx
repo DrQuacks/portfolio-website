@@ -178,10 +178,8 @@ const ProjectsPage = () => {
     console.log('debugImg',{title});
     return (
       <div>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 200, width: '100%' }}>
-          <Typography variant="h4" component="div">{title}</Typography>
-          <Typography variant="body1" component="div">{text}</Typography>
-        </Box>
+        <Typography variant="h4" component="div">{title}</Typography>
+        <Typography variant="body1" component="div">{text}</Typography>
       </div>
     )
   }
