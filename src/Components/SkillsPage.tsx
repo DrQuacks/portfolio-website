@@ -42,6 +42,26 @@ const skillsPageText: {
           most familiar with hook-based React, and I've set up websites both with Create-React-App and Vite.`
       },
       {
+          "name":"Next.js",
+          "path":'/nextjs-logo.svg',
+          "description":`I have been learning Next.js as a modern React framework and am utilizing it in my StudyTrack side project.`
+      },
+      {
+          "name":"GraphQL",
+          "path":'/graphql-logo.png',
+          "description":`I have been learning GraphQL as part of my effort to develop full-stack skills, and am utilizing it in my StudyTrack project`
+      },
+      {
+          "name":"Express.js",
+          "path":'/express-logo.png',
+          "description":`I have been learning Express.js as part of my effort to develop full-stack skills, and am utilizing it in my StudyTrack project`
+      },
+      {
+          "name":"MongoDB",
+          "path":'/mongodb-logo.webp',
+          "description":`I have been learning MongoDB as part of my effort to develop full-stack skills, and am utilizing it in my StudyTrack project`
+      },
+      {
           "name":"d3.js",
           "path":'/d3-logo.png',
           "description":`I use d3.js for the frontend visualizations in both my work for TrialTrace as well as my ML Stock Market Project.`
@@ -143,14 +163,19 @@ const SkillsPage = () => {
       <TitleText title={title} />
       <div className='contactBody'>
         <Box sx={{ width: '80%' }}>
-          <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">
+          <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12, xl: 18 }} justifyContent="center">
             {skillsPageText.projects.map((project) =>{
               return(
                 <Grid size={3}>
                   <div
                       ref={popoverAnchor}
-                      onMouseEnter={(e) => handlePopoverOpen(e,project.description)}
-                      onMouseLeave={handlePopoverClose}
+                      // onMouseEnter={(e) => handlePopoverOpen(e,project.description)}
+                      onMouseDown={(e) => handlePopoverOpen(e,project.description)}
+                      // onMouseLeave={handlePopoverClose}
+                      onMouseUp={handlePopoverClose}
+                      style={{
+                        cursor: 'pointer', // Change the cursor to a pointer
+                      }}
                   >
                     <Item><SkillImage text={project.name} path={project.path} lowPath={project.path}/></Item>
                   </div>
