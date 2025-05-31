@@ -2,7 +2,7 @@ import TitleText from './TitleText';
 import { useState , useRef } from 'react';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
 import Popover from '@mui/material/Popover';
@@ -86,27 +86,24 @@ const skillsPageText: {
 
 const SkillsPage = () => {
   const { title } = skillsPageText
+  const theme = useTheme();
 
-  const [openedPopover, setOpenedPopover] = useState(false)
+  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
   const popoverAnchor = useRef<HTMLDivElement | null>(null);
-  const [popoverText,setPopoverText] = useState("")
+  const [popoverText, setPopoverText] = useState("");
 
-  const handlePopoverOpen = (event: React.MouseEvent<HTMLDivElement>,text:string) => {
-    const {currentTarget} = event
-    console.log('debugImgHover',{currentTarget,event,popoverAnchor});
-    popoverAnchor.current = event.currentTarget
-    setOpenedPopover(true)
-    setPopoverText(text)
+  const handleSkillClick = (event: React.MouseEvent<HTMLDivElement>, skillName: string, description: string) => {
+    if (selectedSkill === skillName) {
+      // If clicking the same skill, close it
+      setSelectedSkill(null);
+      popoverAnchor.current = null;
+    } else {
+      // If clicking a different skill, select it
+      setSelectedSkill(skillName);
+      popoverAnchor.current = event.currentTarget;
+      setPopoverText(description);
+    }
   };
-
-  const handlePopoverClose = () => {
-    popoverAnchor.current = null
-    setOpenedPopover(false)
-    console.log('debugImgHoverClose');
-
-  };
-
-  const id = openedPopover ? 'skill-popper' : undefined;
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#fff',
@@ -115,6 +112,7 @@ const SkillsPage = () => {
     minWidth: '175px',
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    transition: 'all 0.2s ease-in-out',
     ...theme.applyStyles('dark', {
       backgroundColor: '#1A2027',
     }),
@@ -141,15 +139,14 @@ const SkillsPage = () => {
   const SkillPopover = () => {
     return(
       <Popover
-        id={id}
+        id={selectedSkill ? 'skill-popper' : undefined}
         sx={{ pointerEvents: 'none' }}
-        open={openedPopover}
+        open={selectedSkill !== null}
         anchorEl={popoverAnchor.current}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left'
         }}
-        onClose={handlePopoverClose}
         disableRestoreFocus
         disablePortal
       >
@@ -165,19 +162,28 @@ const SkillsPage = () => {
         <Box sx={{ width: '80%' }}>
           <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12, xl: 18 }} justifyContent="center">
             {skillsPageText.projects.map((project) =>{
+              const isSelected = selectedSkill === project.name;
               return(
                 <Grid size={3}>
                   <div
-                      ref={popoverAnchor}
-                      // onMouseEnter={(e) => handlePopoverOpen(e,project.description)}
-                      onMouseDown={(e) => handlePopoverOpen(e,project.description)}
-                      // onMouseLeave={handlePopoverClose}
-                      onMouseUp={handlePopoverClose}
+                      onClick={(e) => handleSkillClick(e, project.name, project.description)}
                       style={{
-                        cursor: 'pointer', // Change the cursor to a pointer
+                        cursor: 'pointer',
+                        transform: isSelected ? 'scale(1.05)' : 'none',
+                        transition: 'transform 0.2s ease-in-out',
                       }}
                   >
-                    <Item><SkillImage text={project.name} path={project.path} lowPath={project.path}/></Item>
+                    <Item 
+                      sx={{
+                        boxShadow: isSelected ? '0 0 10px rgba(0,0,0,0.2)' : 'none',
+                        backgroundColor: isSelected ? '#f5f5f5' : '#fff',
+                        ...theme.applyStyles('dark', {
+                          backgroundColor: isSelected ? '#2A3037' : '#1A2027',
+                        }),
+                      }}
+                    >
+                      <SkillImage text={project.name} path={project.path} lowPath={project.path}/>
+                    </Item>
                   </div>
                   <SkillPopover/>
                 </Grid>
@@ -190,4 +196,4 @@ const SkillsPage = () => {
   );
 };
   
-  export default SkillsPage;
+export default SkillsPage;

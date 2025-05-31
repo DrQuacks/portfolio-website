@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import TitleText from './TitleText';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -49,23 +49,24 @@ const projectsPageText: {
 
 const ProjectsPage = () => {
   const { title } = projectsPageText
+  const theme = useTheme();
 
   const [activeProject,setActiveProject] = useState<ActiveProject>('none');
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#fff',
     ...theme.typography.body2,
-    padding: theme.spacing(1),
+    padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
     display: 'flex',
     flexDirection: 'column',
-    justifySelf:'center',
+    justifySelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    // width: '100%', // Ensure it stretches to the container width
-    width: '90%', // Ensure it stretches to the container width
-    wordWrap: 'break-word', // Ensure text wraps properly
+    width: '90%',
+    wordWrap: 'break-word',
+    transition: 'all 0.3s ease-in-out',
     ...theme.applyStyles('dark', {
       backgroundColor: '#1A2027',
     }),
@@ -74,12 +75,14 @@ const ProjectsPage = () => {
   const ImageButton = styled(ButtonBase)(({ theme }) => ({
     position: 'relative',
     height: 400,
+    width: '100%',
+    transition: 'all 0.3s ease-in-out',
     [theme.breakpoints.down('sm')]: {
-      width: '100% !important', // Overrides inline-style
       height: 100,
     },
     '&:hover, &.Mui-focusVisible': {
       zIndex: 1,
+      transform: 'scale(1.02)',
       '& .MuiImageBackdrop-root': {
         opacity: 0.15,
       },
@@ -136,21 +139,39 @@ const ProjectsPage = () => {
   }));
 
   const ProjectButton = ({title,lowPath}:{title:ActiveProject,lowPath:string}) => {
-    console.log('debugImg',{title,lowPath});
-    const filterType = activeProject === title ? 'none' : 'blur(3px)';
+    const isActive = activeProject === title;
+    const filterType = isActive ? 'none' : 'blur(2px)';
+    
     return (
-      // <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 500, width: '100%' }}>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 200, width: '100%' }}>
+      <Box sx={{ 
+        display: 'flex', 
+        flexWrap: 'wrap', 
+        minWidth: 200, 
+        width: '100%',
+        transform: isActive ? 'scale(1.02)' : 'scale(1)',
+        transition: 'all 0.3s ease-in-out',
+      }}>
         <ImageButton
           focusRipple
           key={title}
-          style={{
-            width: '100%',
-          }}
           onClick={() => activeProject === title ? setActiveProject('none') : setActiveProject(title)}
+          sx={{
+            boxShadow: isActive ? '0 0 20px rgba(0,0,0,0.2)' : 'none',
+          }}
         >
-          <ImageSrc style={{ backgroundImage: `url(${lowPath})`, filter: filterType}} />
-          <ImageBackdrop className="MuiImageBackdrop-root" />
+          <ImageSrc 
+            style={{ 
+              backgroundImage: `url(${lowPath})`, 
+              filter: filterType,
+              transition: 'all 0.3s ease-in-out',
+            }} 
+          />
+          <ImageBackdrop 
+            className="MuiImageBackdrop-root" 
+            sx={{
+              opacity: isActive ? 0.2 : 0.4,
+            }}
+          />
           <Image>
             <Typography
               component="span"
@@ -159,11 +180,27 @@ const ProjectsPage = () => {
               sx={(theme) => (activeProject !== title ? 
                 {
                   position: 'relative',
-                  p: 4,
-                  pt: 2,
-                  pb: `calc(${theme.spacing(1)} + 6px)`,
+                  p: {
+                    xs: 2,
+                    sm: 4
+                  },
+                  pt: {
+                    xs: 1,
+                    sm: 2
+                  },
+                  pb: {
+                    xs: `calc(${theme.spacing(1)} + 3px)`,
+                    sm: `calc(${theme.spacing(1)} + 6px)`
+                  },
+                  transition: 'all 0.3s ease-in-out',
+                  textAlign: 'center',
+                  fontSize: {
+                    xs: '0.9rem',
+                    sm: '1rem'
+                  }
                 } : {
-                  opacity: 0
+                  opacity: 0,
+                  transition: 'all 0.3s ease-in-out',
                 }
               )}
             >
@@ -177,36 +214,82 @@ const ProjectsPage = () => {
   };
 
   const ProjectDescription = ({ title, text }: { title: ActiveProject; text: string }) => {
-    console.log('debugImg', { title });
     return (
-      <div>
-        <Typography variant="h4" component="div" width='100%'>
+      <Box sx={{ 
+        width: '100%',
+        padding: {
+          xs: theme.spacing(1),
+          sm: theme.spacing(2)
+        },
+        opacity: 1,
+        transform: 'translateY(0)',
+        transition: 'all 0.3s ease-in-out',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}>
+        <Typography 
+          variant="h4" 
+          component="div" 
+          sx={{
+            marginBottom: theme.spacing(2),
+            color: theme.palette.text.primary,
+            textAlign: 'center',
+            fontSize: {
+              xs: '1.5rem',
+              sm: '2rem'
+            }
+          }}
+        >
           {title}
         </Typography>
-        <Typography variant="body1" component="div" width='100%'>
+        <Typography 
+          variant="body1" 
+          component="div"
+          sx={{
+            color: theme.palette.text.secondary,
+            lineHeight: 1.6,
+            textAlign: {
+              xs: 'left',
+              sm: 'center'
+            },
+            maxWidth: '800px',
+            padding: {
+              xs: theme.spacing(1),
+              sm: 0
+            }
+          }}
+        >
           {text}
         </Typography>
-      </div>
+      </Box>
     );
   };
-  console.log('update check 3')
 
   return (
     <div className='container'>
       <TitleText title={title} />
       <div className='contactBody'>
-        {/* <Box sx={{ width: {xs:'90%',sm:'80%'}, maxWidth:'100%', overflow: 'clip', padding: 1 }}> */}
-        {/* <Box sx={{ width:'100%', overflow: 'clip'}}> */}
-        <Box className = 'outerBox' sx={{ width:'90%'}} justifyContent="flex-end">
-          {/* <Grid className = 'outerGrid' container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center"> */}
-          <Grid className = 'outerGrid' container spacing={{ xs: 2, md: 4 }} justifyContent="center">
+        <Box sx={{ 
+          width: '90%',
+          maxWidth: '1200px',
+        }}>
+          <Grid container spacing={4} justifyContent="center">
             {projectsPageText.projects.map((project) => {
+              const isActive = activeProject === project.name;
               return (
-                <Grid className = 'innerGrid' size={12} justifyContent="center" >
-                  <Item className = 'item'>
-                    <Box className = 'innerBox' sx={{ width: '100%'}}>
+                <Grid size={12}>
+                  <Item 
+                    sx={{
+                      backgroundColor: isActive ? 
+                        theme.palette.mode === 'dark' ? '#2A3037' : '#f5f5f5' 
+                        : theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+                      boxShadow: isActive ? '0 0 20px rgba(0,0,0,0.1)' : 'none',
+                    }}
+                  >
+                    <Box sx={{ width: '100%' }}>
                       <ProjectButton title={project.name as ActiveProject} lowPath={project.path}/>
-                      {activeProject === project.name && <ProjectDescription title = {project.name} text = {project.description}/>}
+                      {isActive && <ProjectDescription title={project.name} text={project.description}/>}
                     </Box>
                   </Item>
                 </Grid>
@@ -218,5 +301,5 @@ const ProjectsPage = () => {
     </div>
   );
 };
-  
-  export default ProjectsPage;
+
+export default ProjectsPage;
