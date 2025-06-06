@@ -106,16 +106,13 @@ const SkillsPage = () => {
   };
 
   const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
     minWidth: '175px',
     textAlign: 'center',
     color: theme.palette.text.secondary,
     transition: 'all 0.2s ease-in-out',
-    ...theme.applyStyles('dark', {
-      backgroundColor: '#1A2027',
-    }),
   }));
 
   const SkillImage = ({text,path,lowPath}:{text:string,path:string,lowPath:string}) => {
@@ -140,7 +137,13 @@ const SkillsPage = () => {
     return(
       <Popover
         id={selectedSkill ? 'skill-popper' : undefined}
-        sx={{ pointerEvents: 'none' }}
+        sx={{ 
+          pointerEvents: 'none',
+          '& .MuiPaper-root': {
+            backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+            color: theme.palette.text.primary,
+          }
+        }}
         open={selectedSkill !== null}
         anchorEl={popoverAnchor.current}
         anchorOrigin={{
@@ -176,10 +179,9 @@ const SkillsPage = () => {
                     <Item 
                       sx={{
                         boxShadow: isSelected ? '0 0 10px rgba(0,0,0,0.2)' : 'none',
-                        backgroundColor: isSelected ? '#f5f5f5' : '#fff',
-                        ...theme.applyStyles('dark', {
-                          backgroundColor: isSelected ? '#2A3037' : '#1A2027',
-                        }),
+                        backgroundColor: isSelected ? 
+                          theme.palette.mode === 'dark' ? '#2A3037' : '#f5f5f5'
+                          : theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                       }}
                     >
                       <SkillImage text={project.name} path={project.path} lowPath={project.path}/>

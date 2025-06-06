@@ -54,7 +54,7 @@ const ProjectsPage = () => {
   const [activeProject,setActiveProject] = useState<ActiveProject>('none');
 
   const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -67,9 +67,6 @@ const ProjectsPage = () => {
     width: '90%',
     wordWrap: 'break-word',
     transition: 'all 0.3s ease-in-out',
-    ...theme.applyStyles('dark', {
-      backgroundColor: '#1A2027',
-    }),
   }));
 
   const ImageButton = styled(ButtonBase)(({ theme }) => ({
@@ -227,6 +224,7 @@ const ProjectsPage = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        backgroundColor: 'transparent',
       }}>
         <Typography 
           variant="h4" 
