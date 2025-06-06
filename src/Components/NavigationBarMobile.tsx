@@ -9,7 +9,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 
-
 function NavigationBarMobile(
   { setPage,
     allPages
@@ -25,13 +24,16 @@ function NavigationBarMobile(
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const NavItems = allPages.map((page) => {
-    const handleClick = () => {
-      setPage(page)
-      setAnchorEl(null);
-    };
-    return <MenuItem onClick={handleClick}>{page}</MenuItem>
-  })
+  const NavItems = allPages
+    .filter(page => page !== 'Home')
+    .map((page) => {
+      const handleClick = () => {
+        setPage(page)
+        setAnchorEl(null);
+      };
+      return <MenuItem onClick={handleClick}>{page}</MenuItem>
+    });
+
   const NavMenu = 
     <div>
       <IconButton aria-label="menu" onClick={handleClick}>
@@ -49,13 +51,28 @@ function NavigationBarMobile(
         {NavItems}
       </Menu>
     </div>
+
   return (
     <Box className="NavBarDivNotHidden" sx={{ flexGrow: 1}}>
       <AppBar position="static" sx={{backgroundColor: 'black' }}>
         <Toolbar>
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            Michael Kellar
-          </Typography>
+          <Box sx={{ flexGrow: 1, display: 'inline-block' }}>
+            <Typography 
+              variant="h5" 
+              component="span"
+              sx={{ 
+                display: 'inline-block',
+                cursor: 'pointer',
+                '&:hover': {
+                  opacity: 0.8,
+                },
+                transition: 'opacity 0.2s',
+              }}
+              onClick={() => setPage('Home')}
+            >
+              Michael Kellar
+            </Typography>
+          </Box>
           {NavMenu}
         </Toolbar>
       </AppBar>

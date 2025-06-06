@@ -13,16 +13,33 @@ function NavigationBar(
     setPage: (page: Page) => void ,
     allPages: readonly Page[]}
 ) {
-  const Buttons = allPages.map((page) => {
-    return <NavButtton key={page} page={page} clickHandler={setPage} />
-  })
+  const Buttons = allPages
+    .filter(page => page !== 'Home')
+    .map((page) => {
+      return <NavButtton key={page} page={page} clickHandler={setPage} />
+    });
+
   return (
     <Box className="NavBarDivNotHidden" sx={{ flexGrow: 1}}>
       <AppBar position="static" sx={{backgroundColor: 'black' }}>
         <Toolbar>
-          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-            Michael Kellar
-          </Typography>
+          <Box sx={{ flexGrow: 1, display: 'inline-block' }}>
+            <Typography 
+              variant="h4" 
+              component="span"
+              sx={{ 
+                display: 'inline-block',
+                cursor: 'pointer',
+                '&:hover': {
+                  opacity: 0.8,
+                },
+                transition: 'opacity 0.2s',
+              }}
+              onClick={() => setPage('Home')}
+            >
+              Michael Kellar
+            </Typography>
+          </Box>
           {Buttons}
         </Toolbar>
       </AppBar>
