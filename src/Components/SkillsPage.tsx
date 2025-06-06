@@ -68,7 +68,7 @@ const skillsPageText: {
       },
       {
           "name":"NumPy",
-          "path":'/numpy-logo.png',
+          "path":'/numpy-logo-trans.png',
           "description":`I learned NumPy through the Dataquest online course, and still use it in the back end of my ML Stock Market Project.`
       },
       {
@@ -115,20 +115,33 @@ const SkillsPage = () => {
     transition: 'all 0.2s ease-in-out',
   }));
 
-  const SkillImage = ({text,path,lowPath}:{text:string,path:string,lowPath:string}) => {
-    console.log(popoverAnchor,lowPath)
+  const ImageContainer = styled(Box)({
+    position: 'relative',
+    width: '100%',
+    paddingTop: '100%', // 1:1 Aspect ratio
+    overflow: 'hidden',
+  });
+
+  const ResponsiveImage = styled('img')({
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    maxWidth: '90%',
+    maxHeight: '90%',
+    objectFit: 'contain',
+  });
+
+  const SkillImage = ({text,path}:{text:string,path:string}) => {
     return (
       <div>
-        <Typography variant="h4" component="div" sx={{ overflow: 'hidden' }}>{text}</Typography>
-        <br/>
-        <Box
-          key={text}
-          component="img"
-          src={path}
-          style={{
-            width: '100%',
-          }}
-        />
+        <Typography variant="h4" component="div" sx={{ overflow: 'hidden', marginBottom: 1 }}>{text}</Typography>
+        <ImageContainer>
+          <ResponsiveImage
+            src={path}
+            alt={`${text} logo`}
+          />
+        </ImageContainer>
       </div>
     )
   } 
@@ -184,7 +197,7 @@ const SkillsPage = () => {
                           : theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                       }}
                     >
-                      <SkillImage text={project.name} path={project.path} lowPath={project.path}/>
+                      <SkillImage text={project.name} path={project.path}/>
                     </Item>
                   </div>
                   <SkillPopover/>
