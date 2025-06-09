@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import { Typography } from '@mui/material';
 
-type ActiveProject = 'TrialTrace' | 'Stock Market Predictions' | 'Mixed Redox Couple Batteries' | 'none'
+type ActiveProject = 'TrialTrace' | 'Stock Market Predictions' | 'StudyTrack' | 'Mixed Redox Couple Batteries' | 'none'
 
 const projectsPageText: {
   title: string;
@@ -35,6 +35,14 @@ const projectsPageText: {
           regression models to forecast market trends, and am currently transitioning to PyTorch to implement more advanced neural networks and 
           gain deeper hands-on experience with deep learning architectures. This project has given me the opportunity to practice full-stack development, 
           experiment with model performance tuning, and present complex data in an intuitive UI.`
+      },
+      {
+        "name": "StudyTrack",
+        "path": "/studytrack-ss-low.jpg",
+        "description": `StudyTrack is a full-stack web application I’m building to reinforce my skills in modern web development. It’s built with Next.js, 
+        TypeScript, and Tailwind CSS on the frontend, and uses Express.js, GraphQL, and MongoDB on the backend. The app allows users to track their learning 
+        progress across topics, set study goals, and visualize activity over time. This project has given me hands-on experience integrating a GraphQL API, 
+        managing user authentication, and designing a responsive UI using Tailwind.`
       },
       {
           "name":"Mixed Redox Couple Batteries",
