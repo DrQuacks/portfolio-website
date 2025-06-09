@@ -22,19 +22,19 @@ const projectsPageText: {
       {
           "name":"TrialTrace",
           "path":"/trialtrace-ss-low.jpg",
-          "description":`TrialTrace is a startup I've worked at as a Frontend Developer. Mostly I write React code
-          for user input, specifically hook based React, and then use d3.js to provide the output. The codebase largely
-          is written in TypeScript. The scope of my work centers around being given specs for functionality of the app, and I write
-          code and build components to implement that functionality. I have been the lead developer for the past two years, 
-          and have fully written a handful of new features, as well as adding better usability into legacy components`
+          "description":`At TrialTrace, a data visualization startup, I lead frontend development using React (with hooks), TypeScript, 
+          and D3.js. I’ve owned several major features from concept to launch, collaborating cross-functionally to clarify requirements, 
+          architect solutions, and deliver high-quality, performant UI. I've also improved usability and maintainability in legacy code, 
+          championing clean code practices and modern tooling.`
       },
       {
           "name":"Stock Market Predictions",
           "path":"/stock-project-ss-low.jpg",
-          "description":`As a way to get more experience with machine learning, I've been working on a project to predict stock prices. 
-          The backend of the project is written in Python, and uses the numpy, pandas, and scikit-learn libraries. 
-          The frontend is written in Typescript and React, and like my work for TrialTrace, uses d3.js. I am currently learning how to use
-          PyTorch to implement a more advanced neural net than I get out-of-the-box with scikit-learn.`
+          "description":`To deepen my machine learning expertise, I’ve been building a stock price prediction platform with a Python backend 
+          (NumPy, Pandas, scikit-learn) and a TypeScript + React frontend powered by D3.js for rich data visualizations. I designed and trained 
+          regression models to forecast market trends, and am currently transitioning to PyTorch to implement more advanced neural networks and 
+          gain deeper hands-on experience with deep learning architectures. This project has given me the opportunity to practice full-stack development, 
+          experiment with model performance tuning, and present complex data in an intuitive UI.`
       },
       {
           "name":"Mixed Redox Couple Batteries",

@@ -1,5 +1,5 @@
 import TitleText from './TitleText';
-import { useState , useRef } from 'react';
+import { useState , useRef , useEffect } from 'react';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
@@ -16,71 +16,67 @@ const skillsPageText: {
   }[];
 } = {
   "title":"Skills",
-  "projects":[
-      {
-          "name":"Javascript",
-          "path":'/js-logo.png',
-          "description":`I am fairly fluent in Javascript. I've been using it extensively for my job at TrialTrace, as well as the frontend for my ML side project,
-          and also for this website!`
-      },
-      {
-          "name":"Typescript",
-          "path":'/ts-logo.png',
-          "description":`I am also fairly fluent in Typescript for all the same reasons I listed in my Javascript blurb. Even this website is written entirely in
-          Typescript! The first real programming language I learned was Java, and so I still naturally think about coding as being typed.`
-      },
-      {
-          "name":"Python",
-          "path":'/py-logo.png',
-          "description":`I have been learning and working with Python as a means to work with ML/AI. Much of it I initially learned by completing the Dataquest
-          online course, and I've been using it for the back end on my ML side project.`
-      },
-      {
-          "name":"React",
-          "path":'/react-logo.png',
-          "description":`Just like my work with JS/TS, most of my frontend work has utilized React. In fact, that is the framework for this website! Specifically I am
-          most familiar with hook-based React, and I've set up websites both with Create-React-App and Vite.`
-      },
-      {
-          "name":"Next.js",
-          "path":'/nextjs-logo.svg',
-          "description":`I have been learning Next.js as a modern React framework and am utilizing it in my StudyTrack side project.`
-      },
-      {
-          "name":"GraphQL",
-          "path":'/graphql-logo.png',
-          "description":`I have been learning GraphQL as part of my effort to develop full-stack skills, and am utilizing it in my StudyTrack project`
-      },
-      {
-          "name":"Express.js",
-          "path":'/express-logo.png',
-          "description":`I have been learning Express.js as part of my effort to develop full-stack skills, and am utilizing it in my StudyTrack project`
-      },
-      {
-          "name":"MongoDB",
-          "path":'/mongodb-logo.webp',
-          "description":`I have been learning MongoDB as part of my effort to develop full-stack skills, and am utilizing it in my StudyTrack project`
-      },
-      {
-          "name":"d3.js",
-          "path":'/d3-logo.png',
-          "description":`I use d3.js for the frontend visualizations in both my work for TrialTrace as well as my ML Stock Market Project.`
-      },
-      {
-          "name":"NumPy",
-          "path":'/numpy-logo-trans.png',
-          "description":`I learned NumPy through the Dataquest online course, and still use it in the back end of my ML Stock Market Project.`
-      },
-      {
-          "name":"Pandas",
-          "path":'/pandas-logo.png',
-          "description":`I learned NumPy through the Dataquest online course, and still use it in the back end of my ML Stock Market Project.`
-      },
-      {
-          "name":"PyTorch",
-          "path":'/pytorch-logo.webp',
-          "description":`I have been learning PyTorch over the past year, and am beginning to implement it into my ML Stock Market Project to replace Scikit-Learn.`
-      }
+  "projects": [
+    {
+      "name": "JavaScript",
+      "path": "/js-logo.png",
+      "description": "I use JavaScript extensively in my work at TrialTrace, as well as in the frontend of my machine learning side project and this website. I’m comfortable building production-ready applications with it."
+    },
+    {
+      "name": "TypeScript",
+      "path": "/ts-logo.png",
+      "description": "Most of my recent frontend work is written in TypeScript, including this website. With a background in Java, I naturally think in typed systems and appreciate the safety TypeScript adds to modern development."
+    },
+    {
+      "name": "Python",
+      "path": "/py-logo.png",
+      "description": "I’ve been using Python primarily for machine learning, starting with the Dataquest curriculum and continuing through backend development in my stock prediction side project."
+    },
+    {
+      "name": "React",
+      "path": "/react-logo.png",
+      "description": "React is the foundation for most of my frontend development. I'm most familiar with modern, hook-based React, and have built projects using both Create React App and Vite."
+    },
+    {
+      "name": "Next.js",
+      "path": "/nextjs-logo.svg",
+      "description": "I'm using Next.js to build StudyTrack, a project focused on full-stack development. It's helped me learn server-side rendering and modern React architecture."
+    },
+    {
+      "name": "GraphQL",
+      "path": "/graphql-logo.png",
+      "description": "I’m learning GraphQL as part of expanding my full-stack skills and am currently using it in my StudyTrack project to streamline client-server communication."
+    },
+    {
+      "name": "Express.js",
+      "path": "/express-logo.png",
+      "description": "I’m using Express.js for the backend of my StudyTrack project to gain experience with building APIs and handling routing logic in a Node.js environment."
+    },
+    {
+      "name": "MongoDB",
+      "path": "/mongodb-logo.webp",
+      "description": "As part of the backend stack for StudyTrack, I'm working with MongoDB to store and query application data in a document-oriented format."
+    },
+    {
+      "name": "D3.js",
+      "path": "/d3-logo.png",
+      "description": "I use D3.js for frontend data visualizations in both my work at TrialTrace and in my stock prediction project. It’s my go-to for rendering interactive, dynamic charts."
+    },
+    {
+      "name": "NumPy",
+      "path": "/numpy-logo-trans.png",
+      "description": "I use NumPy for numerical operations and matrix computations in my machine learning work, originally learned through the Dataquest curriculum."
+    },
+    {
+      "name": "Pandas",
+      "path": "/pandas-logo.png",
+      "description": "I use Pandas for data cleaning and transformation in my machine learning backend, with initial training from Dataquest and continued practice in personal projects."
+    },
+    {
+      "name": "PyTorch",
+      "path": "/pytorch-logo.webp",
+      "description": "I'm currently learning PyTorch to build more advanced neural networks for my stock prediction project, transitioning beyond the capabilities of scikit-learn."
+    }
   ]
 }
 
@@ -90,20 +86,52 @@ const SkillsPage = () => {
 
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
   const popoverAnchor = useRef<HTMLDivElement | null>(null);
-  const [popoverText, setPopoverText] = useState("");
+  const [popoverText, setPopoverText] = useState<string | null>(null);
 
   const handleSkillClick = (event: React.MouseEvent<HTMLDivElement>, skillName: string, description: string) => {
+
     if (selectedSkill === skillName) {
       // If clicking the same skill, close it
       setSelectedSkill(null);
+      setPopoverText(null);
       popoverAnchor.current = null;
     } else {
       // If clicking a different skill, select it
       setSelectedSkill(skillName);
-      popoverAnchor.current = event.currentTarget;
       setPopoverText(description);
+      popoverAnchor.current = event.currentTarget as HTMLDivElement;
     }
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // Check if the click is outside the popover anchor
+      console.log('target ',event.target)
+      if (
+        Array.from((event.target as HTMLElement).classList).some(
+          (className) => className.includes('MuiTypography') || className.startsWith('css-')
+        )
+      ) {
+        return; // Ignore the click if any class matches the condition
+      }      
+      if (
+        popoverAnchor.current &&
+        !popoverAnchor.current.contains(event.target as Node)
+      ) {
+        setSelectedSkill(null);
+        setPopoverText(null);
+        popoverAnchor.current = null;
+      }
+    };
+  
+    // Add the event listener
+    document.addEventListener('mousedown', handleClickOutside);
+  
+    // Clean up the event listener on unmount
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
