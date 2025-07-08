@@ -40,7 +40,7 @@ const skillsPageText: {
     {
       "name": "Next.js",
       "path": "/nextjs-logo.svg",
-      "description": "I'm using Next.js to build StudyTrack, a project focused on full-stack development. It's helped me learn server-side rendering and modern React architecture."
+      "description": "I've used Next.js for my fullstack projects, including StudyTrack and the Football Stats Visualizer. It's helped me learn server-side rendering and modern React architecture."
     },
     {
       "name": "GraphQL",

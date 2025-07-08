@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import { Typography } from '@mui/material';
 
-type ActiveProject = 'TrialTrace' | 'Stock Market Predictions' | 'StudyTrack' | 'Mixed Redox Couple Batteries' | 'none'
+type ActiveProject = 'TrialTrace' | 'Stock Market Predictions' | 'Football Stats Visualizer' | 'StudyTrack' | 'Mixed Redox Couple Batteries' | 'none'
 
 const projectsPageText: {
   title: string;
@@ -23,23 +23,32 @@ const projectsPageText: {
           "name":"TrialTrace",
           "path":"/trialtrace-ss-low.jpg",
           "description":`At TrialTrace, a data visualization startup, I lead frontend development using React (with hooks), TypeScript, 
-          and D3.js. I’ve owned several major features from concept to launch, collaborating cross-functionally to clarify requirements, 
+          and D3.js. I've owned several major features from concept to launch, collaborating cross-functionally to clarify requirements, 
           architect solutions, and deliver high-quality, performant UI. I've also improved usability and maintainability in legacy code, 
           championing clean code practices and modern tooling.`
       },
       {
           "name":"Stock Market Predictions",
           "path":"/stock-project-ss-low.jpg",
-          "description":`To deepen my machine learning expertise, I’ve been building a stock price prediction platform with a Python backend 
+          "description":`To deepen my machine learning expertise, I've been building a stock price prediction platform with a Python backend 
           (NumPy, Pandas, scikit-learn) and a TypeScript + React frontend powered by D3.js for rich data visualizations. I designed and trained 
           regression models to forecast market trends, and am currently transitioning to PyTorch to implement more advanced neural networks and 
           gain deeper hands-on experience with deep learning architectures. This project has given me the opportunity to practice full-stack development, 
           experiment with model performance tuning, and present complex data in an intuitive UI.`
       },
       {
+          "name":"Football Stats Visualizer",
+          "path":"/footballstats-ss-low.jpg",
+          "description":`This fullstack app showcases my data visualization skills using real NFL stats parsed from CSVs and stored in PostgreSQL. Built 
+          with Next.js/React, TypeScript, and D3.js, it features interactive charts, a player search interface, and serverless API routes to 
+          dynamically query Supabase-hosted data. The project uses pg.Pool for efficient Postgres connections, TailwindCSS for styling, and is deployed 
+          via Vercel. It serves as a public-facing example of my frontend + data viz work, since my production work at TrialTrace sits behind a client login and paywall.
+          As a note, the database only goes back to 2007. I'm getting data from pro-football-reference.com, and they have a no-web-scraper policy.`
+      },
+      {
         "name": "StudyTrack",
         "path": "/studytrack-ss-low.jpg",
-        "description": `StudyTrack is a full-stack web application I’m building to reinforce my skills in modern web development. It’s built with Next.js, 
+        "description": `StudyTrack is a full-stack web application I'm building to reinforce my skills in modern web development. It's built with Next.js, 
         TypeScript, and Tailwind CSS on the frontend, and uses Express.js, GraphQL, and MongoDB on the backend. The app allows users to track their learning 
         progress across topics, set study goals, and visualize activity over time. This project has given me hands-on experience integrating a GraphQL API, 
         managing user authentication, and designing a responsive UI using Tailwind.`
@@ -249,6 +258,30 @@ const ProjectsPage = () => {
         >
           {title}
         </Typography>
+        {title === 'Football Stats Visualizer' && (
+          <Typography 
+            variant="h6" 
+            component="a"
+            href="https://football-data-viewer.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              marginBottom: theme.spacing(2),
+              color: theme.palette.primary.main,
+              textAlign: 'center',
+              textDecoration: 'none',
+              fontSize: {
+                xs: '1rem',
+                sm: '1.25rem'
+              },
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            }}
+          >
+            https://football-data-viewer.vercel.app/
+          </Typography>
+        )}
         <Typography 
           variant="body1" 
           component="div"
