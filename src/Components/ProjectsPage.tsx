@@ -15,6 +15,7 @@ const projectsPageText: {
       name: ActiveProject;
       path: string;
       description: string;
+      url?: string;
   }[];
 } = {
   "title":"Projects",
@@ -25,7 +26,8 @@ const projectsPageText: {
           "description":`At TrialTrace, a data visualization startup, I lead frontend development using React (with hooks), TypeScript, 
           and D3.js. I've owned several major features from concept to launch, collaborating cross-functionally to clarify requirements, 
           architect solutions, and deliver high-quality, performant UI. I've also improved usability and maintainability in legacy code, 
-          championing clean code practices and modern tooling.`
+          championing clean code practices and modern tooling.`,
+          "url":"https://www.trialtrace.com/"
       },
       {
           "name":"Stock Market Predictions",
@@ -34,7 +36,8 @@ const projectsPageText: {
           (NumPy, Pandas, scikit-learn) and a TypeScript + React frontend powered by D3.js for rich data visualizations. I designed and trained 
           regression models to forecast market trends, and am currently transitioning to PyTorch to implement more advanced neural networks and 
           gain deeper hands-on experience with deep learning architectures. This project has given me the opportunity to practice full-stack development, 
-          experiment with model performance tuning, and present complex data in an intuitive UI.`
+          experiment with model performance tuning, and present complex data in an intuitive UI.`,
+          "url":"https://github.com/DrQuacks/stock-flask-app"
       },
       {
           "name":"Football Stats Visualizer",
@@ -43,7 +46,8 @@ const projectsPageText: {
           with Next.js/React, TypeScript, and D3.js, it features interactive charts, a player search interface, and serverless API routes to 
           dynamically query Supabase-hosted data. The project uses pg.Pool for efficient Postgres connections, TailwindCSS for styling, and is deployed 
           via Vercel. It serves as a public-facing example of my frontend + data viz work, since my production work at TrialTrace sits behind a client login and paywall.
-          As a note, the database only goes back to 2007. I'm getting data from pro-football-reference.com, and they have a no-web-scraper policy.`
+          As a note, the database only goes back to 2007. I'm getting data from pro-football-reference.com, and they have a no-web-scraper policy.`,
+          "url":"https://football-data-viewer.vercel.app/"
       },
       {
         "name": "StudyTrack",
@@ -54,12 +58,12 @@ const projectsPageText: {
         managing user authentication, and designing a responsive UI using Tailwind.`
       },
       {
-          "name":"Mixed Redox Couple Batteries",
-          "path":"/MRC-Charge-low.jpg",
-          "description":`My work in graduate school focused on a novel design for lithium-ion battery electrodes. Battery electrodes typically suffer
-          from uneven current distributions, meaning certain parts of the electrode are underutilized, and other parts are overutilized. My design
-          utilized putting a more energetically favorable material in parts of an electrode known to be underutilized, in order to increase
-          capacities at high rates`
+        "name":"Mixed Redox Couple Batteries",
+        "path":"/MRC-Charge-low.jpg",
+        "description":`My work in graduate school focused on a novel design for lithium-ion battery electrodes. Battery electrodes typically suffer
+        from uneven current distributions, meaning certain parts of the electrode are underutilized, and other parts are overutilized. My design
+        utilized putting a more energetically favorable material in parts of an electrode known to be underutilized, in order to increase
+        capacities at high rates`
       }
   ]
 }
@@ -227,7 +231,7 @@ const ProjectsPage = () => {
     );
   };
 
-  const ProjectDescription = ({ title, text }: { title: ActiveProject; text: string }) => {
+  const ProjectDescription = ({ title, text, url }: { title: ActiveProject; text: string, url?:string }) => {
     return (
       <Box sx={{ 
         width: '100%',
@@ -258,11 +262,11 @@ const ProjectsPage = () => {
         >
           {title}
         </Typography>
-        {title === 'Football Stats Visualizer' && (
+        {url && (
           <Typography 
             variant="h6" 
             component="a"
-            href="https://football-data-viewer.vercel.app/"
+            href={url}
             target="_blank"
             rel="noopener noreferrer"
             sx={{
@@ -279,7 +283,7 @@ const ProjectsPage = () => {
               },
             }}
           >
-            https://football-data-viewer.vercel.app/
+            {url}
           </Typography>
         )}
         <Typography 
@@ -328,7 +332,7 @@ const ProjectsPage = () => {
                   >
                     <Box sx={{ width: '100%' }}>
                       <ProjectButton title={project.name as ActiveProject} lowPath={project.path}/>
-                      {isActive && <ProjectDescription title={project.name} text={project.description}/>}
+                      {isActive && <ProjectDescription title={project.name} text={project.description} url={project.url}/>}
                     </Box>
                   </Item>
                 </Grid>
