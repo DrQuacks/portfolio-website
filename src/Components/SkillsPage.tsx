@@ -43,6 +43,11 @@ const skillsPageText: {
       "description": "I've used Next.js for my fullstack projects, including StudyTrack and the Football Stats Visualizer. It's helped me learn server-side rendering and modern React architecture."
     },
     {
+      "name": "Tailwind",
+      "path": "/tailwind-logo.png",
+      "description": "I use Tailwind CSS for styling React components in all my side projects, including my Factor Tree App and Football Stats Visualizer."
+    },
+    {
       "name": "GraphQL",
       "path": "/graphql-logo.png",
       "description": "I’m learning GraphQL as part of expanding my full-stack skills and am currently using it in my StudyTrack project to streamline client-server communication."
@@ -53,20 +58,25 @@ const skillsPageText: {
       "description": "I’m using Express.js for the backend of my StudyTrack project to gain experience with building APIs and handling routing logic in a Node.js environment."
     },
     {
-      "name": "MongoDB",
-      "path": "/mongodb-logo.webp",
-      "description": "As part of the backend stack for StudyTrack, I'm working with MongoDB to store and query application data in a document-oriented format."
+      "name": "Supabase",
+      "path": "/supabase-logo.png",
+      "description": "I’m using Supabase as the database for my Factor Tree App and Football Stats Visualizer."
     },
+    // {
+    //   "name": "MongoDB",
+    //   "path": "/mongodb-logo.webp",
+    //   "description": "As part of the backend stack for StudyTrack, I'm working with MongoDB to store and query application data in a document-oriented format."
+    // },
     {
       "name": "D3.js",
       "path": "/d3-logo.png",
       "description": "I use D3.js for frontend data visualizations in both my work at TrialTrace and in my stock prediction project. It’s my go-to for rendering interactive, dynamic charts."
     },
-    {
-      "name": "NumPy",
-      "path": "/numpy-logo-trans.png",
-      "description": "I use NumPy for numerical operations and matrix computations in my machine learning work, originally learned through the Dataquest curriculum."
-    },
+    // {
+    //   "name": "NumPy",
+    //   "path": "/numpy-logo-trans.png",
+    //   "description": "I use NumPy for numerical operations and matrix computations in my machine learning work, originally learned through the Dataquest curriculum."
+    // },
     {
       "name": "Pandas",
       "path": "/pandas-logo.png",

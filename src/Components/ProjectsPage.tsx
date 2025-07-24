@@ -106,6 +106,9 @@ const ProjectsPage = () => {
     [theme.breakpoints.down('sm')]: {
       height: 100,
     },
+    [theme.breakpoints.up('md')]: {
+      height: 300, // This creates a 3:2 aspect ratio when width is 100% (450px would be 3:2, but 300px gives a nice rectangular look)
+    },
     '&:hover, &.Mui-focusVisible': {
       zIndex: 1,
       transform: 'scale(1.02)',
@@ -128,7 +131,7 @@ const ProjectsPage = () => {
     top: 0,
     bottom: 0,
     backgroundSize: 'cover',
-    backgroundPosition: 'center 40%',
+    backgroundPosition: 'left center',
   });
   
   const Image = styled('span')(({ theme }) => ({
@@ -325,11 +328,26 @@ const ProjectsPage = () => {
           width: '90%',
           maxWidth: '1200px',
         }}>
-          <Grid container spacing={4} justifyContent="center">
+          <Grid 
+            container 
+            spacing={4} 
+            justifyContent="center"
+            sx={{
+              width: '100%',
+              margin: '0 auto',
+            }}
+          >
             {projectsPageText.projects.map((project) => {
               const isActive = activeProject === project.name;
               return (
-                <Grid size={12}>
+                <Grid 
+                  size={{ xs: 12, md: 6 }}
+                  sx={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                  }}
+                >
                   <Item 
                     sx={{
                       backgroundColor: isActive ? 
