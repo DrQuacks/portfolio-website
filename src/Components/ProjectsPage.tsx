@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import { Typography } from '@mui/material';
 
-type ActiveProject = 'TrialTrace' | 'Stock Market Predictions' | 'Football Stats Visualizer' | 'StudyTrack' | 'Mixed Redox Couple Batteries' | 'none'
+type ActiveProject = 'TrialTrace' | 'Stock Market Predictions' | "Prime Factor Trees" | 'Football Stats Visualizer' | 'StudyTrack' | 'Mixed Redox Couple Batteries' | 'none'
 
 const projectsPageText: {
   title: string;
@@ -40,14 +40,22 @@ const projectsPageText: {
           "url":"https://github.com/DrQuacks/stock-flask-app"
       },
       {
-          "name":"Football Stats Visualizer",
-          "path":"/footballstats-ss-low.jpg",
-          "description":`This fullstack app showcases my data visualization skills using real NFL stats parsed from CSVs and stored in PostgreSQL. Built 
-          with Next.js/React, TypeScript, and D3.js, it features interactive charts, a player search interface, and serverless API routes to 
-          dynamically query Supabase-hosted data. The project uses pg.Pool for efficient Postgres connections, TailwindCSS for styling, and is deployed 
-          via Vercel. It serves as a public-facing example of my frontend + data viz work, since my production work at TrialTrace sits behind a client login and paywall.
-          As a note, the database only goes back to 2007. I'm getting data from pro-football-reference.com, and they have a no-web-scraper policy.`,
-          "url":"https://football-data-viewer.vercel.app/"
+        "name":"Prime Factor Trees",
+        "path":"/factortrees-ss-low.jpg",
+        "description":`Prime Factor Trees is an interactive EdTech tool built with Next.js, Tailwind CSS, and Supabase. It helps students break 
+        down numbers into prime factors through animated, visual trees and real-time feedback. I designed it to be both a frontend showcase and 
+        a resource for the students I tutor, with Supabase tracking prior performance to support personalized learning.`,
+        "url":"https://factor-tree-app.vercel.app/"
+    },
+      {
+        "name":"Football Stats Visualizer",
+        "path":"/footballstats-ss-low.jpg",
+        "description":`This fullstack app showcases my data visualization skills using real NFL stats parsed from CSVs and stored in PostgreSQL. Built 
+        with Next.js/React, TypeScript, and D3.js, it features interactive charts, a player search interface, and serverless API routes to 
+        dynamically query Supabase-hosted data. The project uses pg.Pool for efficient Postgres connections, TailwindCSS for styling, and is deployed 
+        via Vercel. It serves as a public-facing example of my frontend + data viz work, since my production work at TrialTrace sits behind a client login and paywall.
+        As a note, the database only goes back to 2007. I'm getting data from pro-football-reference.com, and they have a no-web-scraper policy.`,
+        "url":"https://football-data-viewer.vercel.app/"
       },
       {
         "name": "StudyTrack",
