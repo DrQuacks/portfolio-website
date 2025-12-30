@@ -8,7 +8,7 @@ import ButtonBase from '@mui/material/ButtonBase';
 import { Typography } from '@mui/material';
 
 type ActiveProject = 'TrialTrace' | 'Stock Market Predictions' | "Prime Factor Trees" | 'Football Stats Visualizer' | 'StudyTrack' | 'Mixed Redox Couple Batteries' | 'none'
-
+  | 'MCP Code Tutor'
 const projectsPageText: {
   title: string;
   projects: {
@@ -38,6 +38,12 @@ const projectsPageText: {
           gain deeper hands-on experience with deep learning architectures. This project has given me the opportunity to practice full-stack development, 
           experiment with model performance tuning, and present complex data in an intuitive UI.`,
           "url":"https://github.com/DrQuacks/stock-flask-app"
+      },
+      {
+        "name": "MCP Code Tutor",
+        "path": "/mcp-tutor-ss-low.jpg",
+        "description": `To advance my skills in educational technology and code validation, I’ve been developing MCP Tutor—a dynamic, interactive coding tutor platform. Built with Node.js and TypeScript, it features a modular backend for exercise validation and progress tracking, and supports both JavaScript and React coding challenges. I designed the system to deliver real-time feedback, guide users through step-by-step tutorials, and ensure pedagogical best practices. This project has deepened my expertise in backend architecture, automated code assessment, and the creation of scalable learning tools for aspiring developers.`,
+        "url": "https://github.com/DrQuacks/mcp-tutor"
       },
       {
         "name":"Prime Factor Trees",
