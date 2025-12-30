@@ -42,7 +42,7 @@ const projectsPageText: {
       {
         "name": "MCP Code Tutor",
         "path": "/mcp-tutor-ss-low.jpg",
-        "description": `To advance my skills in educational technology and code validation, I’ve been developing MCP Tutor—a dynamic, interactive coding tutor platform. Built with Node.js and TypeScript, it features a modular backend for exercise validation and progress tracking, and supports both JavaScript and React coding challenges. I designed the system to deliver real-time feedback, guide users through step-by-step tutorials, and ensure pedagogical best practices. This project has deepened my expertise in backend architecture, automated code assessment, and the creation of scalable learning tools for aspiring developers.`,
+        "description": `To bridge the gap between tutorials and vibe coding for learning new libraries and frameworks, I’ve been developing an MCP code Tutor—a dynamic, interactive coding tutor mcp server, which works directly in a VSCode window. Built with Node.js and TypeScript, it features a modular backend for exercise validation and progress tracking, and supports both JavaScript and React coding challenges. I designed the system to deliver real-time feedback with Playwright for code validation, guide users through step-by-step tutorials, and ensure pedagogical best practices. This project has deepened my expertise in model context protocol, backend architecture, automated code assessment, and the creation of scalable learning tools for aspiring developers.`,
         "url": "https://github.com/DrQuacks/mcp-tutor"
       },
       {
