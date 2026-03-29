@@ -9,6 +9,7 @@ import { Typography } from '@mui/material';
 
 type ActiveProject = 'TrialTrace' | 'Stock Market Predictions' | "Prime Factor Trees" | 'Football Stats Visualizer' | 'StudyTrack' | 'Mixed Redox Couple Batteries' | 'none'
   | 'MCP Code Tutor'
+  | 'SmartFiles'
 const projectsPageText: {
   title: string;
   projects: {
@@ -44,6 +45,12 @@ const projectsPageText: {
         "path": "/mcp-tutor-ss-low.jpg",
         "description": `To bridge the gap between tutorials and vibe coding for learning new libraries and frameworks, I’ve been developing an MCP code Tutor—a dynamic, interactive coding tutor mcp server, which works directly in a VSCode window. Built with Node.js and TypeScript, it features a modular backend for exercise validation and progress tracking, and supports both JavaScript and React coding challenges. I designed the system to deliver real-time feedback with Playwright for code validation, guide users through step-by-step tutorials, and ensure pedagogical best practices. This project has deepened my expertise in model context protocol, backend architecture, automated code assessment, and the creation of scalable learning tools for aspiring developers.`,
         "url": "https://github.com/DrQuacks/mcp-tutor"
+      },
+      {
+        "name": "SmartFiles",
+        "path": "/smartfiles-ss-low.jpg",
+        "description": `SmartFiles is a local AI-powered semantic search engine for document folders. Instead of manually digging through directories, it lets me index PDFs, Word documents, and images into a local vector database and search them with natural language queries. The backend is built in Python with Typer, FastAPI, SentenceTransformers, and Chroma, exposing both a CLI and web API, while the frontend uses React and TypeScript to provide a Finder-style workflow with ranked results and rich document previews. Building SmartFiles has strengthened my skills in information retrieval, vector databases, and designing pragmatic, local-first AI tooling for everyday work and tutoring.`,
+        "url": "https://github.com/DrQuacks/smartfiles"
       },
       {
         "name":"Prime Factor Trees",
