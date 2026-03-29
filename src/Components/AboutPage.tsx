@@ -21,6 +21,8 @@ const AboutPage = () => {
             <br /><br />
             I write primarily front-end Typescript/Javascript using React and d3.js. I also have experience with Python,
             particularly in the context of Machine Learning with the NumPy, Pandas, Sci-kit Learn, and PyTorch libraries.
+            More recently, I have been working on more advanced AI tools, including MCP, semantic search, and local-first models, 
+            with my MCP Code Tutor and Smartfiles tools. 
             <br /><br />
             Outside of coding and work, I like to cook and eat, write comedy and watch TV, and to play and watch sports.
             Specifically I enjoy skiing, playing basketball, and going on hikes. 
