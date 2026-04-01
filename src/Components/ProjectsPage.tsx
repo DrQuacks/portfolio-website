@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import TitleText from './TitleText';
 import { styled, useTheme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
@@ -94,6 +94,30 @@ const ProjectsPage = () => {
   const theme = useTheme();
 
   const [activeProject,setActiveProject] = useState<ActiveProject>('none');
+
+  const projectRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (!activeProject || activeProject === 'none') return;
+
+    const element = projectRefs.current[activeProject];
+    if (!element) return;
+
+    const rect = element.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const isFullyVisible = rect.top >= 0 && rect.bottom <= viewportHeight;
+
+    if (!isFullyVisible) {
+      const elementCenter = rect.top + window.scrollY + rect.height / 2;
+      const targetScrollTop = Math.max(elementCenter - viewportHeight / 2, 0);
+
+      window.scrollTo({
+        top: targetScrollTop,
+        behavior: 'smooth',
+      });
+    }
+  }, [activeProject]);
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -354,6 +378,11 @@ const ProjectsPage = () => {
               const isActive = activeProject === project.name;
               return (
                 <Grid 
+                  ref={(el: HTMLDivElement | null) => {
+                    if (el) {
+                      projectRefs.current[project.name] = el;
+                    }
+                  }}
                   size={{ xs: 12, md: 6 }}
                   sx={{
                     width: '100%',
