@@ -10,10 +10,10 @@ const HomePage = () => {
 
   const BlurredUpImage = () => {
     const {src, blur} = useProgressiveImg('/thinkingBW-low.jpg', '/thinkingBW.png');
-    console.log('debugImg',{src, blur});
     return (
       <img
         src={src}
+        alt="Illustration of thoughtful problem solving"
         style={{
           maxHeight:600,
           maxWidth:"90%",

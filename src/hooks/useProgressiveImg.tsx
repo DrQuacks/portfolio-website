@@ -9,8 +9,6 @@ const useProgressiveImg = (lowQualitySrc:string, highQualitySrc:string) => {
             setSrc(highQualitySrc);
         };
     }, [lowQualitySrc, highQualitySrc]);
-    //   return [src, { blur: src === lowQualitySrc }];
-    console.log('debugImg',{src, lowQualitySrc});
     return {src, blur: src === lowQualitySrc};
 
 };
