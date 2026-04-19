@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://michaelkellar.com/sitemap.xml
+Sitemap: https://michaelkellar.netlify.app/sitemap.xml
