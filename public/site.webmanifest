@@ -1,0 +1,17 @@
+{
+  "name": "Michael Kellar Portfolio",
+  "short_name": "Michael Kellar",
+  "description": "Portfolio of Michael Kellar, frontend developer in San Francisco.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "/thinkingBW.png",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
