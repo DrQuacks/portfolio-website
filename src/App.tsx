@@ -23,26 +23,56 @@ const allPages = [
   { name: 'Contact', path: '/contact' },
 ] as const;
 
-const pageMetadata: Record<string, { title: string; description: string }> = {
+const pageMetadata: Record<
+  string,
+  {
+    title: string;
+    description: string;
+    image: string;
+    imageWidth: number;
+    imageHeight: number;
+    imageAlt: string;
+  }
+> = {
   '/': {
     title: 'Michael Kellar | Frontend Developer in San Francisco',
     description: 'Michael Kellar is a frontend developer in San Francisco with experience in React, TypeScript, and data visualization.',
+    image: `${SITE_URL}/thinkingBW.png`,
+    imageWidth: 690,
+    imageHeight: 718,
+    imageAlt: 'Portrait-style black and white profile image representing Michael Kellar',
   },
   '/about': {
     title: 'About | Michael Kellar',
     description: 'Learn more about Michael Kellar, a frontend developer in San Francisco with startup, tutoring, and engineering experience.',
+    image: `${SITE_URL}/trialtrace-ss.png`,
+    imageWidth: 1694,
+    imageHeight: 924,
+    imageAlt: 'TrialTrace application screenshot showing professional frontend dashboard work',
   },
   '/skills': {
     title: 'Skills | Michael Kellar',
     description: 'Explore Michael Kellar\'s frontend and full-stack skills including React, TypeScript, D3.js, and modern web tooling.',
+    image: `${SITE_URL}/footballstats-ss.png`,
+    imageWidth: 1920,
+    imageHeight: 956,
+    imageAlt: 'Interactive football data visualization dashboard built with React and D3',
   },
   '/projects': {
     title: 'Projects | Michael Kellar',
     description: 'View software projects by Michael Kellar, including frontend applications, data visualization work, and AI-assisted tools.',
+    image: `${SITE_URL}/mcp-tutor-ss-low.jpg`,
+    imageWidth: 1595,
+    imageHeight: 891,
+    imageAlt: 'MCP Code Tutor project interface for interactive coding guidance',
   },
   '/contact': {
     title: 'Contact | Michael Kellar',
     description: 'Contact Michael Kellar, frontend developer in San Francisco, for software engineering opportunities and collaboration.',
+    image: `${SITE_URL}/studytrack-ss.png`,
+    imageWidth: 1918,
+    imageHeight: 956,
+    imageAlt: 'StudyTrack web app screenshot with progress and study planning interface',
   },
 };
 
@@ -92,9 +122,15 @@ function App() {
     upsertMetaTag('property', 'og:title', metadata.title);
     upsertMetaTag('property', 'og:description', metadata.description);
     upsertMetaTag('property', 'og:url', routeUrl);
+    upsertMetaTag('property', 'og:image', metadata.image);
+    upsertMetaTag('property', 'og:image:width', String(metadata.imageWidth));
+    upsertMetaTag('property', 'og:image:height', String(metadata.imageHeight));
+    upsertMetaTag('property', 'og:image:alt', metadata.imageAlt);
     upsertMetaTag('name', 'twitter:title', metadata.title);
     upsertMetaTag('name', 'twitter:description', metadata.description);
     upsertMetaTag('name', 'twitter:url', routeUrl);
+    upsertMetaTag('name', 'twitter:image', metadata.image);
+    upsertMetaTag('name', 'twitter:image:alt', metadata.imageAlt);
     upsertCanonicalLink(routeUrl);
   }, [location.pathname]);
 
