@@ -3,18 +3,16 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import {Page} from '../App';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link as RouterLink } from 'react-router-dom';
 
 function NavigationBarMobile(
-  { setPage,
-    allPages
-   }:{ 
-    setPage: (page: Page) => void ,
-    allPages: readonly Page[]}
+  { allPages
+   }:{
+    allPages: readonly { name: string; path: string }[]}
 ) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -25,13 +23,16 @@ function NavigationBarMobile(
     setAnchorEl(null);
   };
   const NavItems = allPages
-    .filter(page => page !== 'Home')
+    .filter((page) => page.name !== 'Home')
     .map((page) => {
       const handleClick = () => {
-        setPage(page)
         setAnchorEl(null);
       };
-      return <MenuItem onClick={handleClick}>{page}</MenuItem>
+      return (
+        <MenuItem key={page.name} onClick={handleClick} component={RouterLink} to={page.path}>
+          {page.name}
+        </MenuItem>
+      )
     });
 
   const NavMenu = 
@@ -59,16 +60,18 @@ function NavigationBarMobile(
           <Box sx={{ flexGrow: 1, display: 'inline-block' }}>
             <Typography 
               variant="h5" 
-              component="span"
+              component={RouterLink}
+              to="/"
               sx={{ 
                 display: 'inline-block',
                 cursor: 'pointer',
+                color: 'inherit',
+                textDecoration: 'none',
                 '&:hover': {
                   opacity: 0.8,
                 },
                 transition: 'opacity 0.2s',
               }}
-              onClick={() => setPage('Home')}
             >
               Michael Kellar
             </Typography>

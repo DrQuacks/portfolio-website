@@ -2,21 +2,19 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import {Page} from '../App';
 import NavButtton from './NavButton';
+import { Link as RouterLink } from 'react-router-dom';
 
 
 function NavigationBar(
-  { setPage,
-    allPages
-   }:{ 
-    setPage: (page: Page) => void ,
-    allPages: readonly Page[]}
+  { allPages
+   }:{
+    allPages: readonly { name: string; path: string }[]}
 ) {
   const Buttons = allPages
-    .filter(page => page !== 'Home')
+    .filter((page) => page.name !== 'Home')
     .map((page) => {
-      return <NavButtton key={page} page={page} clickHandler={setPage} />
+      return <NavButtton key={page.name} page={page.name} path={page.path} />
     });
 
   return (
@@ -26,16 +24,18 @@ function NavigationBar(
           <Box sx={{ flexGrow: 1, display: 'inline-block' }}>
             <Typography 
               variant="h4" 
-              component="span"
+              component={RouterLink}
+              to="/"
               sx={{ 
                 display: 'inline-block',
                 cursor: 'pointer',
+                color: 'inherit',
+                textDecoration: 'none',
                 '&:hover': {
                   opacity: 0.8,
                 },
                 transition: 'opacity 0.2s',
               }}
-              onClick={() => setPage('Home')}
             >
               Michael Kellar
             </Typography>

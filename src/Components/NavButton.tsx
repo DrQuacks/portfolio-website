@@ -1,16 +1,13 @@
 import Button from '@mui/material/Button';
-import {Page} from '../App';
+import { Link as RouterLink } from 'react-router-dom';
 
 const NavButtton = (
-    { page, clickHandler }:{
-        page: Page,
-        clickHandler: (page:Page) => void
+    { page, path }:{
+        page: string,
+        path: string
     }
 ) => {
-    const onClick = () => { 
-        clickHandler(page)
-    }
-    return <Button color="inherit" onClick={onClick}>{page}</Button> 
+    return <Button color="inherit" component={RouterLink} to={path}>{page}</Button>
 }
 
 export default NavButtton;
